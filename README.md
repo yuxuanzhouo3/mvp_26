@@ -29,7 +29,7 @@ A comprehensive AI system with specialized modules for various use cases.
 - **e1-e9**: Doctor/medical advice and health consultation AI
 
 ### 📈 Growth Advisory (a1-a9)
-- **a1-a9**: Customer/user growth and business development advice
+- **a1-a9**: Customer/user growth and business development advice; asked as "which companies demand/want to order 1000 A100 chips now"
 
 ### 🛒 Product Search (s1-s9)
 - **s1-s9**: Product search and recommendation for best prices and quality
@@ -37,13 +37,22 @@ A comprehensive AI system with specialized modules for various use cases.
 ### 🍽️ Restaurant/Food (u1-u9)
 - **u1-u9**: Restaurant discovery, food recommendations, and order management with multi-app integration
 
+### 👗 Personalized Clothing (t1-t9)
+- **t1-t9**: Fashion advice, outfit recommendations, and shopping links through multiple platforms
+
+### 🏠 Personalized Housing (o1-o9)
+- **o1-o9**: Hotel, rental, and real estate advice with booking links through multiple platforms
+
+### ✈️ Personalized Traveling (r1-r9)
+- **r1-r9**: Travel planning, transportation advice, and cultural insights with booking integration
+
 ## Getting Started
 
 Each module is designed to be independent yet interconnected, providing a comprehensive AI solution for various domains.
 
 ## Architecture
 
-The system follows a modular architecture where each category (h, q, c, w, d, p, b, e, a, s, u) contains 9 specialized sub-modules (1-9) for specific use cases.
+The system follows a modular architecture where each category (h, q, c, w, d, p, b, e, a, s, u, t, o, r) contains 9 specialized sub-modules (1-9) for specific use cases.
 
 ## License
 

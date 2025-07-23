@@ -14,6 +14,9 @@ from .medical_advice import MedicalAdviceModule
 from .growth_advisory import GrowthAdvisoryModule
 from .product_search import ProductSearchModule
 from .restaurant_food import RestaurantFoodModule
+from .personalized_clothing import PersonalizedClothingModule
+from .personalized_housing import PersonalizedHousingModule
+from .personalized_traveling import PersonalizedTravelingModule
 
 __all__ = [
     "BaseModule",
@@ -27,5 +30,8 @@ __all__ = [
     "MedicalAdviceModule",
     "GrowthAdvisoryModule",
     "ProductSearchModule",
-    "RestaurantFoodModule"
+    "RestaurantFoodModule",
+    "PersonalizedClothingModule",
+    "PersonalizedHousingModule",
+    "PersonalizedTravelingModule"
 ] 

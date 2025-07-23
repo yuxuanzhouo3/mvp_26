@@ -21,5 +21,8 @@ __all__ = [
     "MedicalAdviceModule",
     "GrowthAdvisoryModule",
     "ProductSearchModule",
-    "RestaurantFoodModule"
+    "RestaurantFoodModule",
+    "PersonalizedClothingModule",
+    "PersonalizedHousingModule",
+    "PersonalizedTravelingModule"
 ] 

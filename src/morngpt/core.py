@@ -32,6 +32,9 @@ class MornGPT:
         self.growth_advisory = GrowthAdvisoryModule(self.config.get('growth_advisory', {}))
         self.product_search = ProductSearchModule(self.config.get('product_search', {}))
         self.restaurant_food = RestaurantFoodModule(self.config.get('restaurant_food', {}))
+        self.personalized_clothing = PersonalizedClothingModule(self.config.get('personalized_clothing', {}))
+        self.personalized_housing = PersonalizedHousingModule(self.config.get('personalized_housing', {}))
+        self.personalized_traveling = PersonalizedTravelingModule(self.config.get('personalized_traveling', {}))
         
         self.modules = {
             'h': self.multi_gpt,
@@ -44,7 +47,10 @@ class MornGPT:
             'e': self.medical_advice,
             'a': self.growth_advisory,
             's': self.product_search,
-            'u': self.restaurant_food
+            'u': self.restaurant_food,
+            't': self.personalized_clothing,
+            'o': self.personalized_housing,
+            'r': self.personalized_traveling
         }
     
     def get_module(self, module_code: str):
