@@ -54,6 +54,21 @@ Each module is designed to be independent yet interconnected, providing a compre
 
 The system follows a modular architecture where each category (h, q, c, w, d, p, b, e, a, s, u, t, o, r) contains 9 specialized sub-modules (1-9) for specific use cases.
 
+## Model Versions
+
+Each submodule supports model versions 1-9, where:
+- **Version 1**: Basic - Standard performance (current default)
+- **Version 2**: Improved - Better accuracy
+- **Version 3**: Enhanced - Advanced features
+- **Version 4**: Premium - High quality
+- **Version 5**: Expert - Professional grade
+- **Version 6**: Master - Elite performance
+- **Version 7**: Ultimate - Top tier
+- **Version 8**: Perfect - Near flawless
+- **Version 9**: Best - Optimal performance
+
+Users can upgrade any submodule to a higher version for improved performance and capabilities.
+
 ## License
 
 This project is under development. 
