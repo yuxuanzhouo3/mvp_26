@@ -89,4 +89,8 @@ Users can upgrade any submodule to a higher version for improved performance and
 
 ## License
 
-This project is under development. 
+This project is under development.
+
+---
+
+**Copyright © 2025 Yuxuan Zhou. All rights reserved.** 
