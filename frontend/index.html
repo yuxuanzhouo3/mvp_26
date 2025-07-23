@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mornGPT - Free AI Client</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            border-bottom-color: #667eea;
+            color: #667eea;
+        }
+
+        .tab:hover {
+            background: #f8f9fa;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .response-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+
+        .response-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .response-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e5e9;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #c33;
+            margin-top: 20px;
+        }
+
+        .success {
+            background: #efe;
+            color: #363;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #363;
+            margin-top: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .model-list {
+            list-style: none;
+        }
+
+        .model-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .model-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cost-badge {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .free-badge {
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 mornGPT</h1>
+            <p>Multi-Module AI System with Free AI Client Integration</p>
+        </div>
+
+        <div class="main-content">
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('generate')">Generate</div>
+                <div class="tab" onclick="switchTab('orchestrate')">H1 Orchestrate</div>
+                <div class="tab" onclick="switchTab('chain')">H1 Chain</div>
+                <div class="tab" onclick="switchTab('optimize')">H1 Optimize</div>
+                <div class="tab" onclick="switchTab('models')">Models</div>
+            </div>
+
+            <!-- Generate Tab -->
+            <div id="generate" class="tab-content active">
+                <h2>Generate AI Response</h2>
+                <form id="generateForm">
+                    <div class="form-group">
+                        <label for="prompt">Prompt:</label>
+                        <textarea id="prompt" placeholder="Enter your prompt here..." required></textarea>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="budget">Budget Tier:</label>
+                            <select id="budget">
+                                <option value="free_local">Free Local (Ollama)</option>
+                                <option value="free_api">Free API (Hugging Face)</option>
+                                <option value="ultra_cheap">Ultra Cheap (Gemini/Claude)</option>
+                                <option value="cheap">Cheap (Mistral/GPT-3.5)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="model">Specific Model (Optional):</label>
+                            <select id="model">
+                                <option value="">Auto-select based on budget</option>
+                                <option value="ollama/llama3.1:8b">Llama 3.1 (Free)</option>
+                                <option value="ollama/mistral:7b">Mistral 7B (Free)</option>
+                                <option value="gemini-1.5-flash">Gemini 1.5 Flash ($0.000075/1K)</option>
+                                <option value="claude-3-5-haiku-20241022">Claude 3.5 Haiku ($0.00025/1K)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="maxTokens">Max Tokens:</label>
+                            <input type="number" id="maxTokens" value="1000" min="1" max="4000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="temperature">Temperature:</label>
+                            <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                            <span id="tempValue">0.7</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Generate Response</button>
+                </form>
+                
+                <div id="generateResponse" class="response-container" style="display: none;">
+                    <div class="response-header">
+                        <h3>Response</h3>
+                        <div class="response-stats">
+                            <span id="responseProvider"></span>
+                            <span id="responseCost"></span>
+                            <span id="responseTime"></span>
+                        </div>
+                    </div>
+                    <div id="responseContent" class="response-content"></div>
+                </div>
+            </div>
+
+            <!-- H1 Orchestrate Tab -->
+            <div id="orchestrate" class="tab-content">
+                <h2>H1 Prompt Orchestration</h2>
+                <form id="orchestrateForm">
+                    <div class="form-group">
+                        <label for="orchestratePrompt">Prompt:</label>
+                        <textarea id="orchestratePrompt" placeholder="Enter your prompt for orchestration..." required></textarea>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="strategy">Strategy:</label>
+                            <select id="strategy">
+                                <option value="parallel">Parallel</option>
+                                <option value="sequential">Sequential</option>
+                                <option value="hierarchical">Hierarchical</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="complexity">Complexity:</label>
+                            <select id="complexity">
+                                <option value="simple">Simple</option>
+                                <option value="medium">Medium</option>
+                                <option value="complex">Complex</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modelVersion">Model Version (1-9):</label>
+                        <input type="number" id="modelVersion" value="1" min="1" max="9">
+                    </div>
+                    
+                    <button type="submit" class="btn">Orchestrate Prompt</button>
+                </form>
+                
+                <div id="orchestrateResponse" class="response-container" style="display: none;">
+                    <div class="response-header">
+                        <h3>Orchestrated Response</h3>
+                        <div class="response-stats">
+                            <span id="orchestrateCost"></span>
+                            <span id="orchestrateQuality"></span>
+                        </div>
+                    </div>
+                    <div id="orchestrateContent" class="response-content"></div>
+                </div>
+            </div>
+
+            <!-- H1 Chain Tab -->
+            <div id="chain" class="tab-content">
+                <h2>H1 Prompt Chaining</h2>
+                <form id="chainForm">
+                    <div class="form-group">
+                        <label for="chainPrompts">Prompts (one per line):</label>
+                        <textarea id="chainPrompts" placeholder="Enter multiple prompts, one per line..." required></textarea>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="chainType">Chain Type:</label>
+                            <select id="chainType">
+                                <option value="sequential">Sequential</option>
+                                <option value="parallel">Parallel</option>
+                                <option value="conditional">Conditional</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="outputFormat">Output Format:</label>
+                            <select id="outputFormat">
+                                <option value="text">Text</option>
+                                <option value="json">JSON</option>
+                                <option value="markdown">Markdown</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Chain Prompts</button>
+                </form>
+                
+                <div id="chainResponse" class="response-container" style="display: none;">
+                    <div class="response-header">
+                        <h3>Chained Response</h3>
+                        <div class="response-stats">
+                            <span id="chainSteps"></span>
+                            <span id="chainCost"></span>
+                        </div>
+                    </div>
+                    <div id="chainContent" class="response-content"></div>
+                </div>
+            </div>
+
+            <!-- H1 Optimize Tab -->
+            <div id="optimize" class="tab-content">
+                <h2>H1 Prompt Optimization</h2>
+                <form id="optimizeForm">
+                    <div class="form-group">
+                        <label for="optimizePrompt">Original Prompt:</label>
+                        <textarea id="optimizePrompt" placeholder="Enter the prompt to optimize..." required></textarea>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="optimizationGoal">Optimization Goal:</label>
+                            <select id="optimizationGoal">
+                                <option value="performance">Performance</option>
+                                <option value="cost">Cost</option>
+                                <option value="clarity">Clarity</option>
+                                <option value="specificity">Specificity</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="targetModel">Target Model:</label>
+                            <select id="targetModel">
+                                <option value="ollama/llama3.1:8b">Llama 3.1 (Free)</option>
+                                <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                                <option value="claude-3-5-haiku-20241022">Claude 3.5 Haiku</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Optimize Prompt</button>
+                </form>
+                
+                <div id="optimizeResponse" class="response-container" style="display: none;">
+                    <div class="response-header">
+                        <h3>Optimization Results</h3>
+                        <div class="response-stats">
+                            <span id="tokenReduction"></span>
+                            <span id="costSavings"></span>
+                        </div>
+                    </div>
+                    <div id="optimizeContent" class="response-content"></div>
+                </div>
+            </div>
+
+            <!-- Models Tab -->
+            <div id="models" class="tab-content">
+                <h2>Available Models</h2>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>🆓 Free Local Models</h3>
+                        <ul class="model-list">
+                            <li>
+                                <span>Llama 3.1</span>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </li>
+                            <li>
+                                <span>Mistral 7B</span>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </li>
+                            <li>
+                                <span>CodeLlama</span>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>💰 Ultra-Cheap Models</h3>
+                        <ul class="model-list">
+                            <li>
+                                <span>Gemini 1.5 Flash</span>
+                                <span class="cost-badge">$0.000075/1K</span>
+                            </li>
+                            <li>
+                                <span>Claude 3.5 Haiku</span>
+                                <span class="cost-badge">$0.00025/1K</span>
+                            </li>
+                            <li>
+                                <span>Mistral Medium</span>
+                                <span class="cost-badge">$0.0024/1K</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="success" style="margin-top: 30px;">
+                    <strong>💡 Cost Savings:</strong> Using these models can save you 90-95% compared to GPT-4!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api/v1';
+        
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        // Temperature slider
+        document.getElementById('temperature').addEventListener('input', function() {
+            document.getElementById('tempValue').textContent = this.value;
+        });
+        
+        // Generate form
+        document.getElementById('generateForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const prompt = document.getElementById('prompt').value;
+            const budget = document.getElementById('budget').value;
+            const model = document.getElementById('model').value;
+            const maxTokens = parseInt(document.getElementById('maxTokens').value);
+            const temperature = parseFloat(document.getElementById('temperature').value);
+            
+            showLoading('generateResponse');
+            
+            try {
+                const response = await fetch(`${API_BASE}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt,
+                        model: model || null,
+                        budget,
+                        max_tokens: maxTokens,
+                        temperature
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResponse('generateResponse', data);
+                    document.getElementById('responseProvider').textContent = `Provider: ${data.provider}`;
+                    document.getElementById('responseCost').textContent = `Cost: $${data.cost.toFixed(6)}`;
+                    document.getElementById('responseTime').textContent = `Time: ${data.response_time.toFixed(2)}s`;
+                } else {
+                    showError('generateResponse', data.detail || 'Generation failed');
+                }
+            } catch (error) {
+                showError('generateResponse', 'Network error: ' + error.message);
+            }
+        });
+        
+        // Orchestrate form
+        document.getElementById('orchestrateForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const prompt = document.getElementById('orchestratePrompt').value;
+            const strategy = document.getElementById('strategy').value;
+            const complexity = document.getElementById('complexity').value;
+            const modelVersion = parseInt(document.getElementById('modelVersion').value);
+            
+            showLoading('orchestrateResponse');
+            
+            try {
+                const response = await fetch(`${API_BASE}/morngpt/h1/orchestrate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt,
+                        models: ['ollama/llama3.1:8b'],
+                        strategy,
+                        complexity,
+                        model_version: modelVersion
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResponse('orchestrateResponse', data);
+                    document.getElementById('orchestrateCost').textContent = `Cost: $${data.api_usage.cost_per_request.toFixed(6)}`;
+                    document.getElementById('orchestrateQuality').textContent = `Quality: ${(data.quality_metrics.coherence_score * 100).toFixed(0)}%`;
+                } else {
+                    showError('orchestrateResponse', data.detail || 'Orchestration failed');
+                }
+            } catch (error) {
+                showError('orchestrateResponse', 'Network error: ' + error.message);
+            }
+        });
+        
+        // Chain form
+        document.getElementById('chainForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const prompts = document.getElementById('chainPrompts').value.split('\n').filter(p => p.trim());
+            const chainType = document.getElementById('chainType').value;
+            const outputFormat = document.getElementById('outputFormat').value;
+            
+            showLoading('chainResponse');
+            
+            try {
+                const response = await fetch(`${API_BASE}/morngpt/h1/chain`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompts,
+                        chain_type: chainType,
+                        output_format: outputFormat,
+                        model_version: 1
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResponse('chainResponse', data);
+                    document.getElementById('chainSteps').textContent = `Steps: ${data.chain_configuration.prompt_count}`;
+                    document.getElementById('chainCost').textContent = `Cost: $${data.api_usage.cost_per_request.toFixed(6)}`;
+                } else {
+                    showError('chainResponse', data.detail || 'Chaining failed');
+                }
+            } catch (error) {
+                showError('chainResponse', 'Network error: ' + error.message);
+            }
+        });
+        
+        // Optimize form
+        document.getElementById('optimizeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const prompt = document.getElementById('optimizePrompt').value;
+            const optimizationGoal = document.getElementById('optimizationGoal').value;
+            const targetModel = document.getElementById('targetModel').value;
+            
+            showLoading('optimizeResponse');
+            
+            try {
+                const response = await fetch(`${API_BASE}/morngpt/h1/optimize`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt,
+                        optimization_goal: optimizationGoal,
+                        target_model: targetModel,
+                        model_version: 1
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResponse('optimizeResponse', data);
+                    document.getElementById('tokenReduction').textContent = `Token Reduction: ${data.optimization_metrics.token_reduction}%`;
+                    document.getElementById('costSavings').textContent = `Cost Savings: $${data.optimization_metrics.cost_savings.toFixed(6)}`;
+                } else {
+                    showError('optimizeResponse', data.detail || 'Optimization failed');
+                }
+            } catch (error) {
+                showError('optimizeResponse', 'Network error: ' + error.message);
+            }
+        });
+        
+        function showLoading(containerId) {
+            const container = document.getElementById(containerId);
+            container.style.display = 'block';
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Processing your request...</p>
+                </div>
+            `;
+        }
+        
+        function showResponse(containerId, data) {
+            const container = document.getElementById(containerId);
+            const content = containerId === 'generateResponse' ? data.content :
+                           containerId === 'orchestrateResponse' ? data.orchestrated_prompt :
+                           containerId === 'chainResponse' ? data.chained_prompts.join('\n\n---\n\n') :
+                           `Original: ${data.original_prompt}\n\nOptimized: ${data.optimized_prompt}`;
+            
+            container.innerHTML = `
+                <div class="response-header">
+                    <h3>Response</h3>
+                    <div class="response-stats">
+                        <span>Success</span>
+                    </div>
+                </div>
+                <div class="response-content">${content}</div>
+            `;
+        }
+        
+        function showError(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div class="error">
+                    <strong>Error:</strong> ${message}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html> 
