@@ -1,0 +1,48 @@
+# FastAPI and ASGI server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# Database
+sqlite3  # Built-in with Python
+
+# Data validation and serialization
+pydantic==2.5.0
+pydantic[email]==2.5.0
+
+# HTTP client for external integrations
+httpx==0.25.2
+requests==2.31.0
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# Logging and monitoring
+structlog==23.2.0
+
+# Rate limiting and caching
+redis==5.0.1  # Optional: for distributed rate limiting
+
+# Payment processing (placeholders for integration)
+stripe==7.8.0  # For Stripe payment processing
+paypal==1.0.0  # For PayPal integration
+
+# Analytics and metrics
+prometheus-client==0.19.0  # For metrics collection
+
+# Development and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0  # Code formatting
+flake8==6.1.0   # Linting
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.4.8
+
+# Production deployment
+gunicorn==21.2.0 
