@@ -12,7 +12,7 @@ from .modules import *
 __all__ = [
     "MornGPT",
     "MultiGPTModule",
-    "TeacherCoachModule", 
+    "TeacherCoachModule",
     "CoderModule",
     "ContentGenerationModule",
     "ContentDetectionModule",
@@ -20,5 +20,6 @@ __all__ = [
     "InterviewJobModule",
     "MedicalAdviceModule",
     "GrowthAdvisoryModule",
-    "ProductSearchModule"
+    "ProductSearchModule",
+    "RestaurantFoodModule"
 ] 

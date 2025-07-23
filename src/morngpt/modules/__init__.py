@@ -13,6 +13,7 @@ from .interview_job import InterviewJobModule
 from .medical_advice import MedicalAdviceModule
 from .growth_advisory import GrowthAdvisoryModule
 from .product_search import ProductSearchModule
+from .restaurant_food import RestaurantFoodModule
 
 __all__ = [
     "BaseModule",
@@ -25,5 +26,6 @@ __all__ = [
     "InterviewJobModule",
     "MedicalAdviceModule",
     "GrowthAdvisoryModule",
-    "ProductSearchModule"
+    "ProductSearchModule",
+    "RestaurantFoodModule"
 ] 

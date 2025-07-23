@@ -34,13 +34,16 @@ A comprehensive AI system with specialized modules for various use cases.
 ### 🛒 Product Search (s1-s9)
 - **s1-s9**: Product search and recommendation for best prices and quality
 
+### 🍽️ Restaurant/Food (u1-u9)
+- **u1-u9**: Restaurant discovery, food recommendations, and order management with multi-app integration
+
 ## Getting Started
 
 Each module is designed to be independent yet interconnected, providing a comprehensive AI solution for various domains.
 
 ## Architecture
 
-The system follows a modular architecture where each category (h, q, c, w, d, p, b, e, a, s) contains 9 specialized sub-modules (1-9) for specific use cases.
+The system follows a modular architecture where each category (h, q, c, w, d, p, b, e, a, s, u) contains 9 specialized sub-modules (1-9) for specific use cases.
 
 ## License
 

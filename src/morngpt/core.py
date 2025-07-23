@@ -31,6 +31,7 @@ class MornGPT:
         self.medical_advice = MedicalAdviceModule(self.config.get('medical_advice', {}))
         self.growth_advisory = GrowthAdvisoryModule(self.config.get('growth_advisory', {}))
         self.product_search = ProductSearchModule(self.config.get('product_search', {}))
+        self.restaurant_food = RestaurantFoodModule(self.config.get('restaurant_food', {}))
         
         self.modules = {
             'h': self.multi_gpt,
@@ -42,7 +43,8 @@ class MornGPT:
             'b': self.interview_job,
             'e': self.medical_advice,
             'a': self.growth_advisory,
-            's': self.product_search
+            's': self.product_search,
+            'u': self.restaurant_food
         }
     
     def get_module(self, module_code: str):
