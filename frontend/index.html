@@ -256,6 +256,257 @@
         .free-badge {
             background: #28a745;
         }
+
+        /* Model Categories */
+        .model-categories {
+            margin-bottom: 30px;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 10px 20px;
+            border: 2px solid #e1e5e9;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-tab.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .category-tab:hover {
+            border-color: #667eea;
+            background: #f8f9fa;
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        /* Model Items */
+        .model-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .model-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+        .model-info {
+            flex: 1;
+        }
+
+        .model-name {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .model-desc {
+            display: block;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .model-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .test-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .test-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .test-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Model Stats */
+        .model-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+
+        .stat-card h4 {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* All Models Grid */
+        .all-models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .model-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+            transition: all 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .model-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .model-header h4 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .model-card p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .model-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .model-card .test-btn {
+            width: 100%;
+            padding: 10px;
+        }
+
+        /* Test Results */
+        .test-results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .test-result-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e1e5e9;
+        }
+
+        .test-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .test-result-model {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .test-result-status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .test-result-status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .test-result-status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .test-result-content {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .test-result-meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -475,44 +726,426 @@
 
             <!-- Models Tab -->
             <div id="models" class="tab-content">
-                <h2>Available Models</h2>
+                <h2>All Available AI Models</h2>
                 
-                <div class="grid">
-                    <div class="card">
-                        <h3>🆓 Free Local Models</h3>
-                        <ul class="model-list">
-                            <li>
-                                <span>Llama 3.1</span>
-                                <span class="cost-badge free-badge">FREE</span>
-                            </li>
-                            <li>
-                                <span>Mistral 7B</span>
-                                <span class="cost-badge free-badge">FREE</span>
-                            </li>
-                            <li>
-                                <span>CodeLlama</span>
-                                <span class="cost-badge free-badge">FREE</span>
-                            </li>
-                        </ul>
+                <!-- Model Categories -->
+                <div class="model-categories">
+                    <div class="category-tabs">
+                        <button class="category-tab active" onclick="switchCategory('free')">🆓 Free APIs</button>
+                        <button class="category-tab" onclick="switchCategory('ultra-cheap')">💰 Ultra-Cheap</button>
+                        <button class="category-tab" onclick="switchCategory('cheap')">💸 Cheap</button>
+                        <button class="category-tab" onclick="switchCategory('popular')">⭐ Popular</button>
+                        <button class="category-tab" onclick="switchCategory('all')">📊 All Models</button>
+                    </div>
+                </div>
+
+                <!-- Free APIs Category -->
+                <div id="free" class="category-content active">
+                    <div class="grid">
+                        <div class="card">
+                            <h3>🆓 Free Local Models (Ollama)</h3>
+                            <ul class="model-list">
+                                <li class="model-item" data-model="ollama/llama3.1:8b" data-provider="ollama" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Llama 3.1 (8B)</span>
+                                        <span class="model-desc">Meta's latest open model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('ollama/llama3.1:8b', 'ollama')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="ollama/mistral:7b" data-provider="ollama" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Mistral 7B</span>
+                                        <span class="model-desc">Fast and efficient 7B model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('ollama/mistral:7b', 'ollama')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="ollama/codellama:7b" data-provider="ollama" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">CodeLlama 7B</span>
+                                        <span class="model-desc">Specialized for code generation</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('ollama/codellama:7b', 'ollama')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="ollama/phi3:mini" data-provider="ollama" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Phi-3 Mini</span>
+                                        <span class="model-desc">Microsoft's efficient 3.8B model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('ollama/phi3:mini', 'ollama')">Test</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h3>🆓 Free API Models (Hugging Face)</h3>
+                            <ul class="model-list">
+                                <li class="model-item" data-model="mistralai/Mistral-7B-Instruct-v0.2" data-provider="huggingface" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Mistral 7B Instruct</span>
+                                        <span class="model-desc">Instruction-tuned Mistral model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('mistralai/Mistral-7B-Instruct-v0.2', 'huggingface')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="meta-llama/Llama-2-7b-chat-hf" data-provider="huggingface" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Llama 2 7B Chat</span>
+                                        <span class="model-desc">Chat-optimized Llama 2 model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('meta-llama/Llama-2-7b-chat-hf', 'huggingface')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="Salesforce/codegen-350M-mono" data-provider="huggingface" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">CodeGen 350M</span>
+                                        <span class="model-desc">Lightweight code generation</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('Salesforce/codegen-350M-mono', 'huggingface')">Test</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultra-Cheap Category -->
+                <div id="ultra-cheap" class="category-content">
+                    <div class="grid">
+                        <div class="card">
+                            <h3>💰 Ultra-Cheap Commercial APIs</h3>
+                            <ul class="model-list">
+                                <li class="model-item" data-model="gemini-1.5-flash" data-provider="google" data-cost="0.000075">
+                                    <div class="model-info">
+                                        <span class="model-name">Gemini 1.5 Flash</span>
+                                        <span class="model-desc">Google's fastest and cheapest model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.000075/1K</span>
+                                        <button class="test-btn" onclick="testModel('gemini-1.5-flash', 'google')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="claude-3-5-haiku-20241022" data-provider="anthropic" data-cost="0.00025">
+                                    <div class="model-info">
+                                        <span class="model-name">Claude 3.5 Haiku</span>
+                                        <span class="model-desc">Anthropic's fastest Claude model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.00025/1K</span>
+                                        <button class="test-btn" onclick="testModel('claude-3-5-haiku-20241022', 'anthropic')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="command-r" data-provider="cohere" data-cost="0.0005">
+                                    <div class="model-info">
+                                        <span class="model-name">Cohere Command R</span>
+                                        <span class="model-desc">Cohere's efficient command model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.0005/1K</span>
+                                        <button class="test-btn" onclick="testModel('command-r', 'cohere')">Test</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cheap Category -->
+                <div id="cheap" class="category-content">
+                    <div class="grid">
+                        <div class="card">
+                            <h3>💸 Cheap Commercial APIs</h3>
+                            <ul class="model-list">
+                                <li class="model-item" data-model="mistral-medium" data-provider="mistral" data-cost="0.0024">
+                                    <div class="model-info">
+                                        <span class="model-name">Mistral Medium</span>
+                                        <span class="model-desc">Mistral's balanced performance model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.0024/1K</span>
+                                        <button class="test-btn" onclick="testModel('mistral-medium', 'mistral')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="gpt-3.5-turbo" data-provider="openai" data-cost="0.0005">
+                                    <div class="model-info">
+                                        <span class="model-name">GPT-3.5 Turbo</span>
+                                        <span class="model-desc">OpenAI's reliable workhorse</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.0005/1K</span>
+                                        <button class="test-btn" onclick="testModel('gpt-3.5-turbo', 'openai')">Test</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Category -->
+                <div id="popular" class="category-content">
+                    <div class="grid">
+                        <div class="card">
+                            <h3>⭐ Most Popular Models</h3>
+                            <ul class="model-list">
+                                <li class="model-item" data-model="ollama/llama3.1:8b" data-provider="ollama" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Llama 3.1 (8B) - FREE</span>
+                                        <span class="model-desc">Most popular free local model</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testModel('ollama/llama3.1:8b', 'ollama')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="gemini-1.5-flash" data-provider="google" data-cost="0.000075">
+                                    <div class="model-info">
+                                        <span class="model-name">Gemini 1.5 Flash - CHEAPEST</span>
+                                        <span class="model-desc">World's cheapest commercial API</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.000075/1K</span>
+                                        <button class="test-btn" onclick="testModel('gemini-1.5-flash', 'google')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="claude-3-5-haiku-20241022" data-provider="anthropic" data-cost="0.00025">
+                                    <div class="model-info">
+                                        <span class="model-name">Claude 3.5 Haiku - BEST VALUE</span>
+                                        <span class="model-desc">Best quality-to-cost ratio</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.00025/1K</span>
+                                        <button class="test-btn" onclick="testModel('claude-3-5-haiku-20241022', 'anthropic')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="gpt-3.5-turbo" data-provider="openai" data-cost="0.0005">
+                                    <div class="model-info">
+                                        <span class="model-name">GPT-3.5 Turbo - RELIABLE</span>
+                                        <span class="model-desc">Most reliable commercial API</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge">$0.0005/1K</span>
+                                        <button class="test-btn" onclick="testModel('gpt-3.5-turbo', 'openai')">Test</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Models Category -->
+                <div id="all" class="category-content">
+                    <div class="model-stats">
+                        <div class="stat-card">
+                            <h4>Total Models</h4>
+                            <span class="stat-number">12</span>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Free Models</h4>
+                            <span class="stat-number">7</span>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Paid Models</h4>
+                            <span class="stat-number">5</span>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Providers</h4>
+                            <span class="stat-number">6</span>
+                        </div>
                     </div>
                     
-                    <div class="card">
-                        <h3>💰 Ultra-Cheap Models</h3>
-                        <ul class="model-list">
-                            <li>
-                                <span>Gemini 1.5 Flash</span>
+                    <div class="all-models-grid">
+                        <div class="model-card" data-model="ollama/llama3.1:8b" data-provider="ollama" data-cost="0">
+                            <div class="model-header">
+                                <h4>Llama 3.1 (8B)</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Meta's latest open model</p>
+                            <div class="model-meta">
+                                <span>Provider: Ollama</span>
+                                <span>Type: Local</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('ollama/llama3.1:8b', 'ollama')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="ollama/mistral:7b" data-provider="ollama" data-cost="0">
+                            <div class="model-header">
+                                <h4>Mistral 7B</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Fast and efficient 7B model</p>
+                            <div class="model-meta">
+                                <span>Provider: Ollama</span>
+                                <span>Type: Local</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('ollama/mistral:7b', 'ollama')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="ollama/codellama:7b" data-provider="ollama" data-cost="0">
+                            <div class="model-header">
+                                <h4>CodeLlama 7B</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Specialized for code generation</p>
+                            <div class="model-meta">
+                                <span>Provider: Ollama</span>
+                                <span>Type: Local</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('ollama/codellama:7b', 'ollama')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="ollama/phi3:mini" data-provider="ollama" data-cost="0">
+                            <div class="model-header">
+                                <h4>Phi-3 Mini</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Microsoft's efficient 3.8B model</p>
+                            <div class="model-meta">
+                                <span>Provider: Ollama</span>
+                                <span>Type: Local</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('ollama/phi3:mini', 'ollama')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="mistralai/Mistral-7B-Instruct-v0.2" data-provider="huggingface" data-cost="0">
+                            <div class="model-header">
+                                <h4>Mistral 7B Instruct</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Instruction-tuned Mistral model</p>
+                            <div class="model-meta">
+                                <span>Provider: Hugging Face</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('mistralai/Mistral-7B-Instruct-v0.2', 'huggingface')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="meta-llama/Llama-2-7b-chat-hf" data-provider="huggingface" data-cost="0">
+                            <div class="model-header">
+                                <h4>Llama 2 7B Chat</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Chat-optimized Llama 2 model</p>
+                            <div class="model-meta">
+                                <span>Provider: Hugging Face</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('meta-llama/Llama-2-7b-chat-hf', 'huggingface')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="Salesforce/codegen-350M-mono" data-provider="huggingface" data-cost="0">
+                            <div class="model-header">
+                                <h4>CodeGen 350M</h4>
+                                <span class="cost-badge free-badge">FREE</span>
+                            </div>
+                            <p>Lightweight code generation</p>
+                            <div class="model-meta">
+                                <span>Provider: Hugging Face</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('Salesforce/codegen-350M-mono', 'huggingface')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="gemini-1.5-flash" data-provider="google" data-cost="0.000075">
+                            <div class="model-header">
+                                <h4>Gemini 1.5 Flash</h4>
                                 <span class="cost-badge">$0.000075/1K</span>
-                            </li>
-                            <li>
-                                <span>Claude 3.5 Haiku</span>
+                            </div>
+                            <p>Google's fastest and cheapest model</p>
+                            <div class="model-meta">
+                                <span>Provider: Google</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('gemini-1.5-flash', 'google')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="claude-3-5-haiku-20241022" data-provider="anthropic" data-cost="0.00025">
+                            <div class="model-header">
+                                <h4>Claude 3.5 Haiku</h4>
                                 <span class="cost-badge">$0.00025/1K</span>
-                            </li>
-                            <li>
-                                <span>Mistral Medium</span>
+                            </div>
+                            <p>Anthropic's fastest Claude model</p>
+                            <div class="model-meta">
+                                <span>Provider: Anthropic</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('claude-3-5-haiku-20241022', 'anthropic')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="command-r" data-provider="cohere" data-cost="0.0005">
+                            <div class="model-header">
+                                <h4>Cohere Command R</h4>
+                                <span class="cost-badge">$0.0005/1K</span>
+                            </div>
+                            <p>Cohere's efficient command model</p>
+                            <div class="model-meta">
+                                <span>Provider: Cohere</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('command-r', 'cohere')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="mistral-medium" data-provider="mistral" data-cost="0.0024">
+                            <div class="model-header">
+                                <h4>Mistral Medium</h4>
                                 <span class="cost-badge">$0.0024/1K</span>
-                            </li>
-                        </ul>
+                            </div>
+                            <p>Mistral's balanced performance model</p>
+                            <div class="model-meta">
+                                <span>Provider: Mistral</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('mistral-medium', 'mistral')">Test Model</button>
+                        </div>
+                        
+                        <div class="model-card" data-model="gpt-3.5-turbo" data-provider="openai" data-cost="0.0005">
+                            <div class="model-header">
+                                <h4>GPT-3.5 Turbo</h4>
+                                <span class="cost-badge">$0.0005/1K</span>
+                            </div>
+                            <p>OpenAI's reliable workhorse</p>
+                            <div class="model-meta">
+                                <span>Provider: OpenAI</span>
+                                <span>Type: API</span>
+                            </div>
+                            <button class="test-btn" onclick="testModel('gpt-3.5-turbo', 'openai')">Test Model</button>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- Model Actions -->
+                <div class="model-actions-bar" style="margin: 30px 0; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                    <h3>Model Testing Tools</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                        <button class="btn" onclick="quickTest()">🚀 Quick Test</button>
+                        <button class="btn" onclick="testAllModels('free')">🧪 Test All Free Models</button>
+                        <button class="btn" onclick="testAllModels('ultra-cheap')">🧪 Test All Ultra-Cheap Models</button>
+                        <button class="btn" onclick="testAllModels('cheap')">🧪 Test All Cheap Models</button>
+                        <button class="btn" onclick="testAllModels('popular')">🧪 Test All Popular Models</button>
+                        <button class="btn" onclick="clearTestResults()" style="background: #dc3545;">🗑️ Clear Results</button>
+                    </div>
+                </div>
+
+                <!-- Model Test Results -->
+                <div id="testResults" class="test-results" style="display: none;">
+                    <h3>Model Test Results</h3>
+                    <div id="testResultsContent"></div>
                 </div>
                 
                 <div class="success" style="margin-top: 30px;">
@@ -743,6 +1376,253 @@
                     <strong>Error:</strong> ${message}
                 </div>
             `;
+        }
+
+        // Model category switching
+        function switchCategory(categoryName) {
+            // Hide all category contents
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all category tabs
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected category content
+            document.getElementById(categoryName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Test individual model
+        async function testModel(modelName, provider) {
+            const testPrompt = "Write a simple Python function to calculate the factorial of a number.";
+            
+            // Show test results section
+            const testResults = document.getElementById('testResults');
+            testResults.style.display = 'block';
+            
+            // Add test result item
+            const testResultsContent = document.getElementById('testResultsContent');
+            const resultId = `test-${Date.now()}`;
+            
+            testResultsContent.innerHTML += `
+                <div id="${resultId}" class="test-result-item">
+                    <div class="test-result-header">
+                        <span class="test-result-model">${modelName}</span>
+                        <span class="test-result-status">Testing...</span>
+                    </div>
+                    <div class="test-result-content">Initializing test...</div>
+                    <div class="test-result-meta">
+                        <span>Provider: ${provider}</span>
+                        <span>Cost: Calculating...</span>
+                        <span>Time: Measuring...</span>
+                    </div>
+                </div>
+            `;
+            
+            const resultElement = document.getElementById(resultId);
+            const statusElement = resultElement.querySelector('.test-result-status');
+            const contentElement = resultElement.querySelector('.test-result-content');
+            const metaElement = resultElement.querySelector('.test-result-meta');
+            
+            try {
+                // Determine budget based on provider
+                let budget = 'free_local';
+                if (provider === 'google' || provider === 'anthropic') {
+                    budget = 'ultra_cheap';
+                } else if (provider === 'openai' || provider === 'mistral') {
+                    budget = 'cheap';
+                }
+                
+                const startTime = Date.now();
+                
+                const response = await fetch(`${API_BASE}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: testPrompt,
+                        model: modelName,
+                        budget: budget,
+                        max_tokens: 300,
+                        temperature: 0.7
+                    })
+                });
+                
+                const data = await response.json();
+                const endTime = Date.now();
+                const responseTime = (endTime - startTime) / 1000;
+                
+                if (response.ok && data.success) {
+                    statusElement.textContent = 'Success';
+                    statusElement.className = 'test-result-status success';
+                    contentElement.textContent = data.content;
+                    metaElement.innerHTML = `
+                        <span>Provider: ${data.provider}</span>
+                        <span>Cost: $${data.cost.toFixed(6)}</span>
+                        <span>Time: ${responseTime.toFixed(2)}s</span>
+                        <span>Tokens: ${data.tokens_used}</span>
+                    `;
+                } else {
+                    statusElement.textContent = 'Error';
+                    statusElement.className = 'test-result-status error';
+                    contentElement.textContent = data.error || 'Test failed';
+                    metaElement.innerHTML = `
+                        <span>Provider: ${provider}</span>
+                        <span>Error: ${data.error || 'Unknown error'}</span>
+                        <span>Time: ${responseTime.toFixed(2)}s</span>
+                    `;
+                }
+            } catch (error) {
+                statusElement.textContent = 'Error';
+                statusElement.className = 'test-result-status error';
+                contentElement.textContent = `Network error: ${error.message}`;
+                metaElement.innerHTML = `
+                    <span>Provider: ${provider}</span>
+                    <span>Error: Network error</span>
+                    <span>Time: N/A</span>
+                `;
+            }
+        }
+
+        // Test all models in a category
+        async function testAllModels(category) {
+            const models = [];
+            
+            // Get all models in the current category
+            const categoryElement = document.getElementById(category);
+            if (categoryElement) {
+                const modelItems = categoryElement.querySelectorAll('.model-item, .model-card');
+                modelItems.forEach(item => {
+                    const modelName = item.dataset.model;
+                    const provider = item.dataset.provider;
+                    if (modelName && provider) {
+                        models.push({ model: modelName, provider: provider });
+                    }
+                });
+            }
+            
+            if (models.length === 0) {
+                alert('No models found in this category');
+                return;
+            }
+            
+            // Confirm test
+            const confirmTest = confirm(`Test all ${models.length} models in this category? This may take a few minutes.`);
+            if (!confirmTest) return;
+            
+            // Show test results
+            const testResults = document.getElementById('testResults');
+            testResults.style.display = 'block';
+            
+            // Test each model sequentially
+            for (let i = 0; i < models.length; i++) {
+                const { model, provider } = models[i];
+                await testModel(model, provider);
+                
+                // Small delay between tests
+                if (i < models.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+            }
+        }
+
+        // Quick test with custom prompt
+        async function quickTest() {
+            const prompt = prompt('Enter a test prompt:', 'Write a Python function to calculate fibonacci numbers');
+            if (!prompt) return;
+            
+            const model = prompt('Enter model name (or leave empty for auto-select):', 'ollama/llama3.1:8b');
+            const budget = prompt('Enter budget tier (free_local, ultra_cheap, cheap):', 'free_local');
+            
+            // Show test results
+            const testResults = document.getElementById('testResults');
+            testResults.style.display = 'block';
+            
+            const testResultsContent = document.getElementById('testResultsContent');
+            const resultId = `quick-test-${Date.now()}`;
+            
+            testResultsContent.innerHTML += `
+                <div id="${resultId}" class="test-result-item">
+                    <div class="test-result-header">
+                        <span class="test-result-model">Quick Test: ${model || 'Auto-select'}</span>
+                        <span class="test-result-status">Testing...</span>
+                    </div>
+                    <div class="test-result-content">Initializing test...</div>
+                    <div class="test-result-meta">
+                        <span>Prompt: ${prompt.substring(0, 50)}...</span>
+                        <span>Budget: ${budget}</span>
+                        <span>Time: Measuring...</span>
+                    </div>
+                </div>
+            `;
+            
+            const resultElement = document.getElementById(resultId);
+            const statusElement = resultElement.querySelector('.test-result-status');
+            const contentElement = resultElement.querySelector('.test-result-content');
+            const metaElement = resultElement.querySelector('.test-result-meta');
+            
+            try {
+                const startTime = Date.now();
+                
+                const response = await fetch(`${API_BASE}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        model: model || null,
+                        budget: budget,
+                        max_tokens: 500,
+                        temperature: 0.7
+                    })
+                });
+                
+                const data = await response.json();
+                const endTime = Date.now();
+                const responseTime = (endTime - startTime) / 1000;
+                
+                if (response.ok && data.success) {
+                    statusElement.textContent = 'Success';
+                    statusElement.className = 'test-result-status success';
+                    contentElement.textContent = data.content;
+                    metaElement.innerHTML = `
+                        <span>Provider: ${data.provider}</span>
+                        <span>Cost: $${data.cost.toFixed(6)}</span>
+                        <span>Time: ${responseTime.toFixed(2)}s</span>
+                        <span>Tokens: ${data.tokens_used}</span>
+                    `;
+                } else {
+                    statusElement.textContent = 'Error';
+                    statusElement.className = 'test-result-status error';
+                    contentElement.textContent = data.error || 'Test failed';
+                    metaElement.innerHTML = `
+                        <span>Error: ${data.error || 'Unknown error'}</span>
+                        <span>Time: ${responseTime.toFixed(2)}s</span>
+                    `;
+                }
+            } catch (error) {
+                statusElement.textContent = 'Error';
+                statusElement.className = 'test-result-status error';
+                contentElement.textContent = `Network error: ${error.message}`;
+                metaElement.innerHTML = `
+                    <span>Error: Network error</span>
+                    <span>Time: N/A</span>
+                `;
+            }
+        }
+
+        // Clear test results
+        function clearTestResults() {
+            const testResultsContent = document.getElementById('testResultsContent');
+            testResultsContent.innerHTML = '';
+            document.getElementById('testResults').style.display = 'none';
         }
     </script>
 </body>
