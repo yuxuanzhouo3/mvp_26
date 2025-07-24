@@ -158,6 +158,41 @@
             font-size: 14px;
             color: #666;
         }
+        
+        .auto-config {
+            color: #666;
+            font-style: italic;
+            font-size: 11px;
+            margin-top: 4px;
+            display: block;
+        }
+        
+        .auto-config-info {
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        
+        .info-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .info-card strong {
+            color: #fff;
+        }
 
         .response-content {
             background: white;
@@ -569,77 +604,25 @@
                         <textarea id="morngptPrompt" placeholder="Enter your prompt here..." required></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="morngptMode">Mode Selection:</label>
-                        <select id="morngptMode" onchange="toggleMode()">
-                            <option value="morngpt">mornGPT Module Mode</option>
-                            <option value="direct">Direct Model Mode</option>
-                        </select>
-                    </div>
-                    
-                    <div id="morngptModuleSection">
-                        <div class="grid">
-                            <div class="form-group">
-                                <label for="morngptBudget">Budget Tier:</label>
-                                <select id="morngptBudget">
-                                    <option value="free_local">Free Local (Ollama)</option>
-                                    <option value="free_api">Free API (Hugging Face)</option>
-                                    <option value="ultra_cheap">Ultra Cheap (Gemini/Claude)</option>
-                                    <option value="cheap">Cheap (Mistral/GPT-3.5)</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="morngptModel">Specific Model (Optional):</label>
-                                <select id="morngptModel">
-                                    <option value="">Auto-select based on budget</option>
-                                    <option value="ollama/llama3.1:8b">Llama 3.1 (Free)</option>
-                                    <option value="ollama/mistral:7b">Mistral 7B (Free)</option>
-                                    <option value="gemini-1.5-flash">Gemini 1.5 Flash ($0.000075/1K)</option>
-                                    <option value="claude-3-5-haiku-20241022">Claude 3.5 Haiku ($0.00025/1K)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="directModelSection" style="display: none;">
-                        <div class="form-group">
-                            <label for="directModelSelect">Select Model:</label>
-                            <select id="directModelSelect">
-                                <optgroup label="🆓 Free Local Models (Ollama)">
-                                    <option value="ollama/llama3.1:8b">Llama 3.1 (8B) - FREE</option>
-                                    <option value="ollama/mistral:7b">Mistral 7B - FREE</option>
-                                    <option value="ollama/codellama:7b">CodeLlama 7B - FREE</option>
-                                    <option value="ollama/phi3:mini">Phi-3 Mini - FREE</option>
-                                </optgroup>
-                                <optgroup label="🆓 Free API Models (Hugging Face)">
-                                    <option value="mistralai/Mistral-7B-Instruct-v0.2">Mistral 7B Instruct - FREE</option>
-                                    <option value="meta-llama/Llama-2-7b-chat-hf">Llama 2 7B Chat - FREE</option>
-                                    <option value="Salesforce/codegen-350M-mono">CodeGen 350M - FREE</option>
-                                </optgroup>
-                                <optgroup label="💰 Ultra-Cheap Models">
-                                    <option value="gemini-1.5-flash">Gemini 1.5 Flash - $0.000075/1K</option>
-                                    <option value="claude-3-5-haiku-20241022">Claude 3.5 Haiku - $0.00025/1K</option>
-                                    <option value="command-r">Cohere Command R - $0.0005/1K</option>
-                                </optgroup>
-                                <optgroup label="💸 Cheap Models">
-                                    <option value="mistral-medium">Mistral Medium - $0.0024/1K</option>
-                                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo - $0.0005/1K</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
-                    
                     <div class="grid">
                         <div class="form-group">
                             <label for="morngptMaxTokens">Max Tokens:</label>
-                            <input type="number" id="morngptMaxTokens" value="1000" min="1" max="4000">
+                            <input type="number" id="morngptMaxTokens" value="1000" min="1" max="4000" readonly>
+                            <small class="auto-config">Auto-configured based on module</small>
                         </div>
                         
                         <div class="form-group">
                             <label for="morngptTemperature">Temperature:</label>
-                            <input type="range" id="morngptTemperature" min="0" max="1" step="0.1" value="0.7">
+                            <input type="range" id="morngptTemperature" min="0" max="1" step="0.1" value="0.7" readonly>
                             <span id="morngptTempValue">0.7</span>
+                            <small class="auto-config">Auto-configured based on module</small>
+                        </div>
+                    </div>
+                    
+                    <div class="auto-config-info">
+                        <div class="info-card">
+                            <h4>🤖 Auto-Configuration</h4>
+                            <p>Model, budget, tokens, and temperature are automatically optimized based on your selected mornGPT module and submodule.</p>
                         </div>
                     </div>
                     
@@ -1112,59 +1095,165 @@
             event.target.classList.add('active');
         }
         
-        // Temperature slider for mornGPT
-        document.getElementById('morngptTemperature').addEventListener('input', function() {
-            document.getElementById('morngptTempValue').textContent = this.value;
-        });
-        
-        // Mode toggle function
-        function toggleMode() {
-            const mode = document.getElementById('morngptMode').value;
-            const moduleSection = document.getElementById('morngptModuleSection');
-            const directSection = document.getElementById('directModelSection');
+        // Auto-configure parameters based on mornGPT module selection
+        function configureModule() {
+            const module = document.getElementById('moduleSelect').value;
+            const submodule = parseInt(document.getElementById('submoduleSelect').value);
             
-            if (mode === 'morngpt') {
-                moduleSection.style.display = 'block';
-                directSection.style.display = 'none';
-            } else {
-                moduleSection.style.display = 'none';
-                directSection.style.display = 'block';
+            if (!module || !submodule) return;
+            
+            // Configuration based on module and submodule
+            const config = getModuleConfig(module, submodule);
+            
+            // Update parameters
+            document.getElementById('morngptMaxTokens').value = config.maxTokens;
+            document.getElementById('morngptTemperature').value = config.temperature;
+            document.getElementById('morngptTempValue').textContent = config.temperature;
+            
+            // Update info card
+            updateConfigInfo(config);
+        }
+        
+        // Get configuration for specific module and submodule
+        function getModuleConfig(module, submodule) {
+            const baseConfigs = {
+                'h': { // Multi-GPT Prompts
+                    name: 'Multi-GPT Prompts',
+                    baseTokens: 800,
+                    baseTemp: 0.7,
+                    model: 'ollama/llama3.1:8b'
+                },
+                'q': { // AI Teacher/Coach
+                    name: 'AI Teacher/Coach',
+                    baseTokens: 1200,
+                    baseTemp: 0.6,
+                    model: 'ollama/mistral:7b'
+                },
+                'c': { // AI Coder
+                    name: 'AI Coder',
+                    baseTokens: 1500,
+                    baseTemp: 0.3,
+                    model: 'ollama/codellama:7b'
+                },
+                'w': { // Content Generation
+                    name: 'Content Generation',
+                    baseTokens: 1000,
+                    baseTemp: 0.8,
+                    model: 'gemini-1.5-flash'
+                },
+                'd': { // Content Detection
+                    name: 'Content Detection',
+                    baseTokens: 600,
+                    baseTemp: 0.2,
+                    model: 'claude-3-5-haiku-20241022'
+                },
+                'p': { // Person Search & Matching
+                    name: 'Person Search & Matching',
+                    baseTokens: 900,
+                    baseTemp: 0.5,
+                    model: 'ollama/llama3.1:8b'
+                },
+                'b': { // Interview/Job
+                    name: 'Interview/Job',
+                    baseTokens: 1100,
+                    baseTemp: 0.6,
+                    model: 'ollama/mistral:7b'
+                },
+                'e': { // Medical Advice
+                    name: 'Medical Advice',
+                    baseTokens: 800,
+                    baseTemp: 0.4,
+                    model: 'claude-3-5-haiku-20241022'
+                },
+                'a': { // Growth Advisory
+                    name: 'Growth Advisory',
+                    baseTokens: 1300,
+                    baseTemp: 0.7,
+                    model: 'gemini-1.5-flash'
+                },
+                's': { // Product Search
+                    name: 'Product Search',
+                    baseTokens: 700,
+                    baseTemp: 0.5,
+                    model: 'ollama/llama3.1:8b'
+                },
+                'u': { // Restaurant/Food
+                    name: 'Restaurant/Food',
+                    baseTokens: 600,
+                    baseTemp: 0.6,
+                    model: 'ollama/mistral:7b'
+                },
+                't': { // Personalized Clothing
+                    name: 'Personalized Clothing',
+                    baseTokens: 800,
+                    baseTemp: 0.7,
+                    model: 'ollama/llama3.1:8b'
+                },
+                'o': { // Personalized Housing
+                    name: 'Personalized Housing',
+                    baseTokens: 1000,
+                    baseTemp: 0.5,
+                    model: 'ollama/mistral:7b'
+                },
+                'r': { // Personalized Traveling
+                    name: 'Personalized Traveling',
+                    baseTokens: 1200,
+                    baseTemp: 0.6,
+                    model: 'ollama/llama3.1:8b'
+                },
+                'z': { // Anti-AI Protection
+                    name: 'Anti-AI Protection',
+                    baseTokens: 500,
+                    baseTemp: 0.3,
+                    model: 'ollama/phi3:mini'
+                }
+            };
+            
+            const baseConfig = baseConfigs[module];
+            if (!baseConfig) return { maxTokens: 1000, temperature: 0.7, model: 'ollama/llama3.1:8b' };
+            
+            // Scale tokens and temperature based on submodule (1-9)
+            const tokenMultiplier = 0.5 + (submodule * 0.1); // 0.6 to 1.4
+            const tempAdjustment = (submodule - 5) * 0.05; // -0.2 to +0.2
+            
+            return {
+                maxTokens: Math.round(baseConfig.baseTokens * tokenMultiplier),
+                temperature: Math.max(0.1, Math.min(1.0, baseConfig.baseTemp + tempAdjustment)),
+                model: baseConfig.model,
+                name: baseConfig.name,
+                submodule: submodule
+            };
+        }
+        
+        // Update configuration info display
+        function updateConfigInfo(config) {
+            const infoCard = document.querySelector('.info-card');
+            if (infoCard) {
+                infoCard.innerHTML = `
+                    <h4>🤖 Auto-Configuration: ${config.name} (${config.submodule})</h4>
+                    <p><strong>Model:</strong> ${config.model}</p>
+                    <p><strong>Tokens:</strong> ${config.maxTokens} (optimized for ${config.name.toLowerCase()})</p>
+                    <p><strong>Temperature:</strong> ${config.temperature} (${config.temperature < 0.4 ? 'Precise' : config.temperature < 0.7 ? 'Balanced' : 'Creative'})</p>
+                `;
             }
         }
+        
+        // Add event listeners for auto-configuration
+        document.getElementById('moduleSelect').addEventListener('change', configureModule);
+        document.getElementById('submoduleSelect').addEventListener('change', configureModule);
         
         // mornGPT form
         document.getElementById('morngptForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const mode = document.getElementById('morngptMode').value;
+            const module = document.getElementById('moduleSelect').value;
+            const submodule = parseInt(document.getElementById('submoduleSelect').value);
             const prompt = document.getElementById('morngptPrompt').value;
             const maxTokens = parseInt(document.getElementById('morngptMaxTokens').value);
             const temperature = parseFloat(document.getElementById('morngptTemperature').value);
             
-            let requestBody = {
-                prompt: prompt,
-                max_tokens: maxTokens,
-                temperature: temperature
-            };
-            
-            if (mode === 'morngpt') {
-                // mornGPT Module Mode
-                const module = document.getElementById('moduleSelect').value;
-                const submodule = parseInt(document.getElementById('submoduleSelect').value);
-                const budget = document.getElementById('morngptBudget').value;
-                const model = document.getElementById('morngptModel').value;
-                
-                requestBody.prompt = `[${module.toUpperCase()}${submodule}] ${prompt}`;
-                requestBody.model = model || null;
-                requestBody.budget = budget;
-                requestBody.module = module;
-                requestBody.submodule = submodule;
-            } else {
-                // Direct Model Mode
-                const directModel = document.getElementById('directModelSelect').value;
-                requestBody.model = directModel;
-                requestBody.budget = 'auto';
-            }
+            // Get auto-configured settings
+            const config = getModuleConfig(module, submodule);
             
             showLoading('morngptResponse');
             
@@ -1174,7 +1263,15 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(requestBody)
+                    body: JSON.stringify({
+                        prompt: `[${module.toUpperCase()}${submodule}] ${prompt}`,
+                        model: config.model,
+                        budget: 'auto',
+                        max_tokens: config.maxTokens,
+                        temperature: config.temperature,
+                        module: module,
+                        submodule: submodule
+                    })
                 });
                 
                 const data = await response.json();
