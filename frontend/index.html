@@ -193,6 +193,101 @@
         .info-card strong {
             color: #fff;
         }
+        
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .model-category {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .model-category h4 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 16px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+        
+        .model-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .model-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .model-option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .model-option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .model-option input[type="radio"]:checked + .model-name {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .model-option:has(input[type="radio"]:checked) {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .model-name {
+            font-weight: 500;
+            color: #333;
+            margin-right: 8px;
+        }
+        
+        .model-desc {
+            color: #666;
+            font-size: 12px;
+            flex-grow: 1;
+        }
+        
+        .cost-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .cost-badge.free {
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+        
+        .cost-badge.cheap {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .cost-badge.paid {
+            background: #f8d7da;
+            color: #721c24;
+        }
 
         .response-content {
             background: white;
@@ -604,25 +699,124 @@
                         <textarea id="morngptPrompt" placeholder="Enter your prompt here..." required></textarea>
                     </div>
                     
+                    <div class="form-group">
+                        <label for="modelSelect">Select AI Model:</label>
+                        <div class="model-grid">
+                            <div class="model-category">
+                                <h4>🆓 Free Local Models</h4>
+                                <div class="model-options">
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="ollama/llama3.1:8b" checked>
+                                        <span class="model-name">Llama 3.1 (8B)</span>
+                                        <span class="model-desc">Meta's latest open model</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="ollama/mistral:7b">
+                                        <span class="model-name">Mistral 7B</span>
+                                        <span class="model-desc">Fast and efficient 7B model</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="ollama/codellama:7b">
+                                        <span class="model-name">CodeLlama 7B</span>
+                                        <span class="model-desc">Specialized for code generation</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="ollama/phi3:mini">
+                                        <span class="model-name">Phi-3 Mini</span>
+                                        <span class="model-desc">Microsoft's efficient 3.8B model</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="model-category">
+                                <h4>🆓 Free API Models</h4>
+                                <div class="model-options">
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="mistralai/Mistral-7B-Instruct-v0.2">
+                                        <span class="model-name">Mistral 7B Instruct</span>
+                                        <span class="model-desc">Hugging Face hosted model</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="meta-llama/Llama-2-7b-chat-hf">
+                                        <span class="model-name">Llama 2 7B Chat</span>
+                                        <span class="model-desc">Meta's chat-optimized model</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="Salesforce/codegen-350M-mono">
+                                        <span class="model-name">CodeGen 350M</span>
+                                        <span class="model-desc">Lightweight code generation</span>
+                                        <span class="cost-badge free">FREE</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="model-category">
+                                <h4>💰 Ultra-Cheap Models</h4>
+                                <div class="model-options">
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="gemini-1.5-flash">
+                                        <span class="model-name">Gemini 1.5 Flash</span>
+                                        <span class="model-desc">Google's fastest model</span>
+                                        <span class="cost-badge cheap">$0.000075/1K</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="claude-3-5-haiku-20241022">
+                                        <span class="model-name">Claude 3.5 Haiku</span>
+                                        <span class="model-desc">Anthropic's efficient model</span>
+                                        <span class="cost-badge cheap">$0.00025/1K</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="command-r">
+                                        <span class="model-name">Cohere Command R</span>
+                                        <span class="model-desc">Cohere's command model</span>
+                                        <span class="cost-badge cheap">$0.0005/1K</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="model-category">
+                                <h4>💸 Cheap Models</h4>
+                                <div class="model-options">
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="mistral-medium">
+                                        <span class="model-name">Mistral Medium</span>
+                                        <span class="model-desc">Mistral's balanced model</span>
+                                        <span class="cost-badge paid">$0.0024/1K</span>
+                                    </label>
+                                    <label class="model-option">
+                                        <input type="radio" name="selectedModel" value="gpt-3.5-turbo">
+                                        <span class="model-name">GPT-3.5 Turbo</span>
+                                        <span class="model-desc">OpenAI's reliable model</span>
+                                        <span class="cost-badge paid">$0.0005/1K</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="grid">
                         <div class="form-group">
                             <label for="morngptMaxTokens">Max Tokens:</label>
-                            <input type="number" id="morngptMaxTokens" value="1000" min="1" max="4000" readonly>
-                            <small class="auto-config">Auto-configured based on module</small>
+                            <input type="number" id="morngptMaxTokens" value="1000" min="1" max="4000">
                         </div>
                         
                         <div class="form-group">
                             <label for="morngptTemperature">Temperature:</label>
-                            <input type="range" id="morngptTemperature" min="0" max="1" step="0.1" value="0.7" readonly>
+                            <input type="range" id="morngptTemperature" min="0" max="1" step="0.1" value="0.7">
                             <span id="morngptTempValue">0.7</span>
-                            <small class="auto-config">Auto-configured based on module</small>
                         </div>
                     </div>
                     
                     <div class="auto-config-info">
                         <div class="info-card">
-                            <h4>🤖 Auto-Configuration</h4>
-                            <p>Model, budget, tokens, and temperature are automatically optimized based on your selected mornGPT module and submodule.</p>
+                            <h4>🤖 mornGPT Configuration</h4>
+                            <p>Select your mornGPT module and preferred AI model. Parameters can be adjusted manually or use auto-configuration.</p>
                         </div>
                     </div>
                     
@@ -1242,6 +1436,11 @@
         document.getElementById('moduleSelect').addEventListener('change', configureModule);
         document.getElementById('submoduleSelect').addEventListener('change', configureModule);
         
+        // Temperature slider for mornGPT
+        document.getElementById('morngptTemperature').addEventListener('input', function() {
+            document.getElementById('morngptTempValue').textContent = this.value;
+        });
+        
         // mornGPT form
         document.getElementById('morngptForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1252,8 +1451,14 @@
             const maxTokens = parseInt(document.getElementById('morngptMaxTokens').value);
             const temperature = parseFloat(document.getElementById('morngptTemperature').value);
             
-            // Get auto-configured settings
-            const config = getModuleConfig(module, submodule);
+            // Get selected model
+            const selectedModel = document.querySelector('input[name="selectedModel"]:checked');
+            if (!selectedModel) {
+                showError('morngptResponse', 'Please select an AI model');
+                return;
+            }
+            
+            const model = selectedModel.value;
             
             showLoading('morngptResponse');
             
@@ -1265,10 +1470,10 @@
                     },
                     body: JSON.stringify({
                         prompt: `[${module.toUpperCase()}${submodule}] ${prompt}`,
-                        model: config.model,
+                        model: model,
                         budget: 'auto',
-                        max_tokens: config.maxTokens,
-                        temperature: config.temperature,
+                        max_tokens: maxTokens,
+                        temperature: temperature,
                         module: module,
                         submodule: submodule
                     })
