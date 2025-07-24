@@ -288,6 +288,150 @@
             background: #f8d7da;
             color: #721c24;
         }
+        
+        /* ChatGPT Style */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px);
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .chat-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .model-selector select {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 200px;
+        }
+        
+        .model-selector select option {
+            background: white;
+            color: #333;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .message.user {
+            justify-content: flex-end;
+        }
+        
+        .message.assistant {
+            justify-content: flex-start;
+        }
+        
+        .message-content {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .message.user .message-content {
+            background: #667eea;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .message.assistant .message-content {
+            background: white;
+            color: #333;
+            border: 1px solid #e1e5e9;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .input-wrapper:focus-within {
+            border-color: #667eea;
+            box-shadow: 0 2px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        #chatInput {
+            flex: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            max-height: 120px;
+            min-height: 20px;
+        }
+        
+        .send-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            transform: rotate(90deg);
+        }
+        
+        .send-button:hover {
+            background: #5a6fd8;
+            transform: rotate(90deg) scale(1.05);
+        }
+        
+        .send-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
 
         .response-content {
             background: white;
@@ -654,185 +798,209 @@
 
             <!-- mornGPT Tab -->
             <div id="morngpt" class="tab-content active">
-                <h2>mornGPT - Multi-Module AI System</h2>
-                <form id="morngptForm">
-                    <div class="form-group">
-                        <label for="moduleSelect">Select mornGPT Module:</label>
-                        <select id="moduleSelect" required>
-                            <option value="">Choose a module...</option>
-                            <option value="h">Multi-GPT Prompts (H1-H9)</option>
-                            <option value="q">AI Teacher/Coach (Q1-Q9)</option>
-                            <option value="c">AI Coder (C1-C9)</option>
-                            <option value="w">Content Generation (W1-W9)</option>
-                            <option value="d">Content Detection (D1-D9)</option>
-                            <option value="p">Person Search & Matching (P1-P9)</option>
-                            <option value="b">Interview/Job (B1-B9)</option>
-                            <option value="e">Medical Advice (E1-E9)</option>
-                            <option value="a">Growth Advisory (A1-A9)</option>
-                            <option value="s">Product Search (S1-S9)</option>
-                            <option value="u">Restaurant/Food (U1-U9)</option>
-                            <option value="t">Personalized Clothing (T1-T9)</option>
-                            <option value="o">Personalized Housing (O1-O9)</option>
-                            <option value="r">Personalized Traveling (R1-R9)</option>
-                            <option value="z">Anti-AI Protection (Z1-Z9)</option>
-                        </select>
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>mornGPT</h2>
+                        <div class="model-selector">
+                            <select id="combinedSelect" onchange="updateModelInfo()">
+                                <optgroup label="🤖 mornGPT Modules">
+                                    <option value="h1">Multi-GPT Prompts (H1) - Basic</option>
+                                    <option value="h2">Multi-GPT Prompts (H2) - Standard</option>
+                                    <option value="h3">Multi-GPT Prompts (H3) - Advanced</option>
+                                    <option value="h4">Multi-GPT Prompts (H4) - Expert</option>
+                                    <option value="h5">Multi-GPT Prompts (H5) - Professional</option>
+                                    <option value="h6">Multi-GPT Prompts (H6) - Enterprise</option>
+                                    <option value="h7">Multi-GPT Prompts (H7) - Premium</option>
+                                    <option value="h8">Multi-GPT Prompts (H8) - Elite</option>
+                                    <option value="h9">Multi-GPT Prompts (H9) - Ultimate</option>
+                                    
+                                    <option value="q1">AI Teacher/Coach (Q1) - Basic</option>
+                                    <option value="q2">AI Teacher/Coach (Q2) - Standard</option>
+                                    <option value="q3">AI Teacher/Coach (Q3) - Advanced</option>
+                                    <option value="q4">AI Teacher/Coach (Q4) - Expert</option>
+                                    <option value="q5">AI Teacher/Coach (Q5) - Professional</option>
+                                    <option value="q6">AI Teacher/Coach (Q6) - Enterprise</option>
+                                    <option value="q7">AI Teacher/Coach (Q7) - Premium</option>
+                                    <option value="q8">AI Teacher/Coach (Q8) - Elite</option>
+                                    <option value="q9">AI Teacher/Coach (Q9) - Ultimate</option>
+                                    
+                                    <option value="c1">AI Coder (C1) - Basic</option>
+                                    <option value="c2">AI Coder (C2) - Standard</option>
+                                    <option value="c3">AI Coder (C3) - Advanced</option>
+                                    <option value="c4">AI Coder (C4) - Expert</option>
+                                    <option value="c5">AI Coder (C5) - Professional</option>
+                                    <option value="c6">AI Coder (C6) - Enterprise</option>
+                                    <option value="c7">AI Coder (C7) - Premium</option>
+                                    <option value="c8">AI Coder (C8) - Elite</option>
+                                    <option value="c9">AI Coder (C9) - Ultimate</option>
+                                    
+                                    <option value="w1">Content Generation (W1) - Basic</option>
+                                    <option value="w2">Content Generation (W2) - Standard</option>
+                                    <option value="w3">Content Generation (W3) - Advanced</option>
+                                    <option value="w4">Content Generation (W4) - Expert</option>
+                                    <option value="w5">Content Generation (W5) - Professional</option>
+                                    <option value="w6">Content Generation (W6) - Enterprise</option>
+                                    <option value="w7">Content Generation (W7) - Premium</option>
+                                    <option value="w8">Content Generation (W8) - Elite</option>
+                                    <option value="w9">Content Generation (W9) - Ultimate</option>
+                                    
+                                    <option value="d1">Content Detection (D1) - Basic</option>
+                                    <option value="d2">Content Detection (D2) - Standard</option>
+                                    <option value="d3">Content Detection (D3) - Advanced</option>
+                                    <option value="d4">Content Detection (D4) - Expert</option>
+                                    <option value="d5">Content Detection (D5) - Professional</option>
+                                    <option value="d6">Content Detection (D6) - Enterprise</option>
+                                    <option value="d7">Content Detection (D7) - Premium</option>
+                                    <option value="d8">Content Detection (D8) - Elite</option>
+                                    <option value="d9">Content Detection (D9) - Ultimate</option>
+                                    
+                                    <option value="p1">Person Search & Matching (P1) - Basic</option>
+                                    <option value="p2">Person Search & Matching (P2) - Standard</option>
+                                    <option value="p3">Person Search & Matching (P3) - Advanced</option>
+                                    <option value="p4">Person Search & Matching (P4) - Expert</option>
+                                    <option value="p5">Person Search & Matching (P5) - Professional</option>
+                                    <option value="p6">Person Search & Matching (P6) - Enterprise</option>
+                                    <option value="p7">Person Search & Matching (P7) - Premium</option>
+                                    <option value="p8">Person Search & Matching (P8) - Elite</option>
+                                    <option value="p9">Person Search & Matching (P9) - Ultimate</option>
+                                    
+                                    <option value="b1">Interview/Job (B1) - Basic</option>
+                                    <option value="b2">Interview/Job (B2) - Standard</option>
+                                    <option value="b3">Interview/Job (B3) - Advanced</option>
+                                    <option value="b4">Interview/Job (B4) - Expert</option>
+                                    <option value="b5">Interview/Job (B5) - Professional</option>
+                                    <option value="b6">Interview/Job (B6) - Enterprise</option>
+                                    <option value="b7">Interview/Job (B7) - Premium</option>
+                                    <option value="b8">Interview/Job (B8) - Elite</option>
+                                    <option value="b9">Interview/Job (B9) - Ultimate</option>
+                                    
+                                    <option value="e1">Medical Advice (E1) - Basic</option>
+                                    <option value="e2">Medical Advice (E2) - Standard</option>
+                                    <option value="e3">Medical Advice (E3) - Advanced</option>
+                                    <option value="e4">Medical Advice (E4) - Expert</option>
+                                    <option value="e5">Medical Advice (E5) - Professional</option>
+                                    <option value="e6">Medical Advice (E6) - Enterprise</option>
+                                    <option value="e7">Medical Advice (E7) - Premium</option>
+                                    <option value="e8">Medical Advice (E8) - Elite</option>
+                                    <option value="e9">Medical Advice (E9) - Ultimate</option>
+                                    
+                                    <option value="a1">Growth Advisory (A1) - Basic</option>
+                                    <option value="a2">Growth Advisory (A2) - Standard</option>
+                                    <option value="a3">Growth Advisory (A3) - Advanced</option>
+                                    <option value="a4">Growth Advisory (A4) - Expert</option>
+                                    <option value="a5">Growth Advisory (A5) - Professional</option>
+                                    <option value="a6">Growth Advisory (A6) - Enterprise</option>
+                                    <option value="a7">Growth Advisory (A7) - Premium</option>
+                                    <option value="a8">Growth Advisory (A8) - Elite</option>
+                                    <option value="a9">Growth Advisory (A9) - Ultimate</option>
+                                    
+                                    <option value="s1">Product Search (S1) - Basic</option>
+                                    <option value="s2">Product Search (S2) - Standard</option>
+                                    <option value="s3">Product Search (S3) - Advanced</option>
+                                    <option value="s4">Product Search (S4) - Expert</option>
+                                    <option value="s5">Product Search (S5) - Professional</option>
+                                    <option value="s6">Product Search (S6) - Enterprise</option>
+                                    <option value="s7">Product Search (S7) - Premium</option>
+                                    <option value="s8">Product Search (S8) - Elite</option>
+                                    <option value="s9">Product Search (S9) - Ultimate</option>
+                                    
+                                    <option value="u1">Restaurant/Food (U1) - Basic</option>
+                                    <option value="u2">Restaurant/Food (U2) - Standard</option>
+                                    <option value="u3">Restaurant/Food (U3) - Advanced</option>
+                                    <option value="u4">Restaurant/Food (U4) - Expert</option>
+                                    <option value="u5">Restaurant/Food (U5) - Professional</option>
+                                    <option value="u6">Restaurant/Food (U6) - Enterprise</option>
+                                    <option value="u7">Restaurant/Food (U7) - Premium</option>
+                                    <option value="u8">Restaurant/Food (U8) - Elite</option>
+                                    <option value="u9">Restaurant/Food (U9) - Ultimate</option>
+                                    
+                                    <option value="t1">Personalized Clothing (T1) - Basic</option>
+                                    <option value="t2">Personalized Clothing (T2) - Standard</option>
+                                    <option value="t3">Personalized Clothing (T3) - Advanced</option>
+                                    <option value="t4">Personalized Clothing (T4) - Expert</option>
+                                    <option value="t5">Personalized Clothing (T5) - Professional</option>
+                                    <option value="t6">Personalized Clothing (T6) - Enterprise</option>
+                                    <option value="t7">Personalized Clothing (T7) - Premium</option>
+                                    <option value="t8">Personalized Clothing (T8) - Elite</option>
+                                    <option value="t9">Personalized Clothing (T9) - Ultimate</option>
+                                    
+                                    <option value="o1">Personalized Housing (O1) - Basic</option>
+                                    <option value="o2">Personalized Housing (O2) - Standard</option>
+                                    <option value="o3">Personalized Housing (O3) - Advanced</option>
+                                    <option value="o4">Personalized Housing (O4) - Expert</option>
+                                    <option value="o5">Personalized Housing (O5) - Professional</option>
+                                    <option value="o6">Personalized Housing (O6) - Enterprise</option>
+                                    <option value="o7">Personalized Housing (O7) - Premium</option>
+                                    <option value="o8">Personalized Housing (O8) - Elite</option>
+                                    <option value="o9">Personalized Housing (O9) - Ultimate</option>
+                                    
+                                    <option value="r1">Personalized Traveling (R1) - Basic</option>
+                                    <option value="r2">Personalized Traveling (R2) - Standard</option>
+                                    <option value="r3">Personalized Traveling (R3) - Advanced</option>
+                                    <option value="r4">Personalized Traveling (R4) - Expert</option>
+                                    <option value="r5">Personalized Traveling (R5) - Professional</option>
+                                    <option value="r6">Personalized Traveling (R6) - Enterprise</option>
+                                    <option value="r7">Personalized Traveling (R7) - Premium</option>
+                                    <option value="r8">Personalized Traveling (R8) - Elite</option>
+                                    <option value="r9">Personalized Traveling (R9) - Ultimate</option>
+                                    
+                                    <option value="z1">Anti-AI Protection (Z1) - Basic</option>
+                                    <option value="z2">Anti-AI Protection (Z2) - Standard</option>
+                                    <option value="z3">Anti-AI Protection (Z3) - Advanced</option>
+                                    <option value="z4">Anti-AI Protection (Z4) - Expert</option>
+                                    <option value="z5">Anti-AI Protection (Z5) - Professional</option>
+                                    <option value="z6">Anti-AI Protection (Z6) - Enterprise</option>
+                                    <option value="z7">Anti-AI Protection (Z7) - Premium</option>
+                                    <option value="z8">Anti-AI Protection (Z8) - Elite</option>
+                                    <option value="z9">Anti-AI Protection (Z9) - Ultimate</option>
+                                </optgroup>
+                                
+                                <optgroup label="🆓 Free Models">
+                                    <option value="ollama/llama3.1:8b">Llama 3.1 (8B) - FREE</option>
+                                    <option value="ollama/mistral:7b">Mistral 7B - FREE</option>
+                                    <option value="ollama/codellama:7b">CodeLlama 7B - FREE</option>
+                                    <option value="ollama/phi3:mini">Phi-3 Mini - FREE</option>
+                                    <option value="mistralai/Mistral-7B-Instruct-v0.2">Mistral 7B Instruct - FREE</option>
+                                    <option value="meta-llama/Llama-2-7b-chat-hf">Llama 2 7B Chat - FREE</option>
+                                    <option value="Salesforce/codegen-350M-mono">CodeGen 350M - FREE</option>
+                                </optgroup>
+                                
+                                <optgroup label="💰 Paid Models">
+                                    <option value="gemini-1.5-flash">Gemini 1.5 Flash - $0.000075/1K</option>
+                                    <option value="claude-3-5-haiku-20241022">Claude 3.5 Haiku - $0.00025/1K</option>
+                                    <option value="command-r">Cohere Command R - $0.0005/1K</option>
+                                    <option value="mistral-medium">Mistral Medium - $0.0024/1K</option>
+                                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo - $0.0005/1K</option>
+                                </optgroup>
+                            </select>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="submoduleSelect">Select Submodule (1-9):</label>
-                        <select id="submoduleSelect" required>
-                            <option value="">Choose submodule...</option>
-                            <option value="1">1 - Basic</option>
-                            <option value="2">2 - Standard</option>
-                            <option value="3">3 - Advanced</option>
-                            <option value="4">4 - Expert</option>
-                            <option value="5">5 - Professional</option>
-                            <option value="6">6 - Enterprise</option>
-                            <option value="7">7 - Premium</option>
-                            <option value="8">8 - Elite</option>
-                            <option value="9">9 - Ultimate</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="morngptPrompt">Prompt:</label>
-                        <textarea id="morngptPrompt" placeholder="Enter your prompt here..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modelSelect">Select AI Model:</label>
-                        <div class="model-grid">
-                            <div class="model-category">
-                                <h4>🆓 Free Local Models</h4>
-                                <div class="model-options">
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="ollama/llama3.1:8b" checked>
-                                        <span class="model-name">Llama 3.1 (8B)</span>
-                                        <span class="model-desc">Meta's latest open model</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="ollama/mistral:7b">
-                                        <span class="model-name">Mistral 7B</span>
-                                        <span class="model-desc">Fast and efficient 7B model</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="ollama/codellama:7b">
-                                        <span class="model-name">CodeLlama 7B</span>
-                                        <span class="model-desc">Specialized for code generation</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="ollama/phi3:mini">
-                                        <span class="model-name">Phi-3 Mini</span>
-                                        <span class="model-desc">Microsoft's efficient 3.8B model</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message assistant">
+                            <div class="message-content">
+                                <p>Hello! I'm mornGPT. I can help you with specialized AI tasks using various models. Choose a module or model from the dropdown above and start chatting!</p>
                             </div>
-                            
-                            <div class="model-category">
-                                <h4>🆓 Free API Models</h4>
-                                <div class="model-options">
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="mistralai/Mistral-7B-Instruct-v0.2">
-                                        <span class="model-name">Mistral 7B Instruct</span>
-                                        <span class="model-desc">Hugging Face hosted model</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="meta-llama/Llama-2-7b-chat-hf">
-                                        <span class="model-name">Llama 2 7B Chat</span>
-                                        <span class="model-desc">Meta's chat-optimized model</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="Salesforce/codegen-350M-mono">
-                                        <span class="model-name">CodeGen 350M</span>
-                                        <span class="model-desc">Lightweight code generation</span>
-                                        <span class="cost-badge free">FREE</span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div class="model-category">
-                                <h4>💰 Ultra-Cheap Models</h4>
-                                <div class="model-options">
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="gemini-1.5-flash">
-                                        <span class="model-name">Gemini 1.5 Flash</span>
-                                        <span class="model-desc">Google's fastest model</span>
-                                        <span class="cost-badge cheap">$0.000075/1K</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="claude-3-5-haiku-20241022">
-                                        <span class="model-name">Claude 3.5 Haiku</span>
-                                        <span class="model-desc">Anthropic's efficient model</span>
-                                        <span class="cost-badge cheap">$0.00025/1K</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="command-r">
-                                        <span class="model-name">Cohere Command R</span>
-                                        <span class="model-desc">Cohere's command model</span>
-                                        <span class="cost-badge cheap">$0.0005/1K</span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div class="model-category">
-                                <h4>💸 Cheap Models</h4>
-                                <div class="model-options">
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="mistral-medium">
-                                        <span class="model-name">Mistral Medium</span>
-                                        <span class="model-desc">Mistral's balanced model</span>
-                                        <span class="cost-badge paid">$0.0024/1K</span>
-                                    </label>
-                                    <label class="model-option">
-                                        <input type="radio" name="selectedModel" value="gpt-3.5-turbo">
-                                        <span class="model-name">GPT-3.5 Turbo</span>
-                                        <span class="model-desc">OpenAI's reliable model</span>
-                                        <span class="cost-badge paid">$0.0005/1K</span>
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
-                    <div class="grid">
-                        <div class="form-group">
-                            <label for="morngptMaxTokens">Max Tokens:</label>
-                            <input type="number" id="morngptMaxTokens" value="1000" min="1" max="4000">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="morngptTemperature">Temperature:</label>
-                            <input type="range" id="morngptTemperature" min="0" max="1" step="0.1" value="0.7">
-                            <span id="morngptTempValue">0.7</span>
-                        </div>
+                    <div class="chat-input-container">
+                        <form id="chatForm">
+                            <div class="input-wrapper">
+                                <textarea 
+                                    id="chatInput" 
+                                    placeholder="Message mornGPT..." 
+                                    rows="1"
+                                    oninput="autoResize(this)"
+                                ></textarea>
+                                <button type="submit" class="send-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    
-                    <div class="auto-config-info">
-                        <div class="info-card">
-                            <h4>🤖 mornGPT Configuration</h4>
-                            <p>Select your mornGPT module and preferred AI model. Parameters can be adjusted manually or use auto-configuration.</p>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn">Generate Response</button>
-                </form>
-                
-                <div id="morngptResponse" class="response-container" style="display: none;">
-                    <div class="response-header">
-                        <h3>mornGPT Response</h3>
-                        <div class="response-stats">
-                            <span id="morngptProvider"></span>
-                            <span id="morngptCost"></span>
-                            <span id="morngptTime"></span>
-                        </div>
-                    </div>
-                    <div id="morngptContent" class="response-content"></div>
                 </div>
             </div>
 
@@ -1436,31 +1604,91 @@
         document.getElementById('moduleSelect').addEventListener('change', configureModule);
         document.getElementById('submoduleSelect').addEventListener('change', configureModule);
         
-        // Temperature slider for mornGPT
-        document.getElementById('morngptTemperature').addEventListener('input', function() {
-            document.getElementById('morngptTempValue').textContent = this.value;
-        });
+        // Chat interface functions
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+        }
         
-        // mornGPT form
-        document.getElementById('morngptForm').addEventListener('submit', async function(e) {
+        function addMessage(content, isUser = false) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <p>${content}</p>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function updateModelInfo() {
+            const selected = document.getElementById('combinedSelect').value;
+            const isMornGPT = selected.length === 2 && /^[a-z]\d$/.test(selected);
+            
+            if (isMornGPT) {
+                const module = selected[0];
+                const submodule = parseInt(selected[1]);
+                const config = getModuleConfig(module, submodule);
+                addMessage(`Switched to ${config.name} (${submodule}) - ${config.model}`, false);
+            } else {
+                addMessage(`Switched to ${selected}`, false);
+            }
+        }
+        
+        // Chat form submission
+        document.getElementById('chatForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const module = document.getElementById('moduleSelect').value;
-            const submodule = parseInt(document.getElementById('submoduleSelect').value);
-            const prompt = document.getElementById('morngptPrompt').value;
-            const maxTokens = parseInt(document.getElementById('morngptMaxTokens').value);
-            const temperature = parseFloat(document.getElementById('morngptTemperature').value);
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
             
-            // Get selected model
-            const selectedModel = document.querySelector('input[name="selectedModel"]:checked');
-            if (!selectedModel) {
-                showError('morngptResponse', 'Please select an AI model');
-                return;
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, true);
+            input.value = '';
+            input.style.height = 'auto';
+            
+            // Get selected model/module
+            const selected = document.getElementById('combinedSelect').value;
+            const isMornGPT = selected.length === 2 && /^[a-z]\d$/.test(selected);
+            
+            let requestBody = {
+                prompt: message,
+                max_tokens: 1000,
+                temperature: 0.7
+            };
+            
+            if (isMornGPT) {
+                // mornGPT module
+                const module = selected[0];
+                const submodule = parseInt(selected[1]);
+                const config = getModuleConfig(module, submodule);
+                
+                requestBody.prompt = `[${module.toUpperCase()}${submodule}] ${message}`;
+                requestBody.model = config.model;
+                requestBody.module = module;
+                requestBody.submodule = submodule;
+                requestBody.max_tokens = config.maxTokens;
+                requestBody.temperature = config.temperature;
+            } else {
+                // Direct model
+                requestBody.model = selected;
             }
             
-            const model = selectedModel.value;
-            
-            showLoading('morngptResponse');
+            // Show typing indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <p>Typing...</p>
+                </div>
+            `;
+            document.getElementById('chatMessages').appendChild(typingDiv);
             
             try {
                 const response = await fetch(`${API_BASE}/generate`, {
@@ -1468,29 +1696,22 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        prompt: `[${module.toUpperCase()}${submodule}] ${prompt}`,
-                        model: model,
-                        budget: 'auto',
-                        max_tokens: maxTokens,
-                        temperature: temperature,
-                        module: module,
-                        submodule: submodule
-                    })
+                    body: JSON.stringify(requestBody)
                 });
                 
                 const data = await response.json();
                 
+                // Remove typing indicator
+                typingDiv.remove();
+                
                 if (response.ok) {
-                    showResponse('morngptResponse', data);
-                    document.getElementById('morngptProvider').textContent = `Provider: ${data.provider}`;
-                    document.getElementById('morngptCost').textContent = `Cost: $${data.cost.toFixed(6)}`;
-                    document.getElementById('morngptTime').textContent = `Time: ${data.response_time.toFixed(2)}s`;
+                    addMessage(data.content, false);
                 } else {
-                    showError('morngptResponse', data.detail || 'Generation failed');
+                    addMessage(`Error: ${data.detail || 'Generation failed'}`, false);
                 }
             } catch (error) {
-                showError('morngptResponse', 'Network error: ' + error.message);
+                typingDiv.remove();
+                addMessage(`Network error: ${error.message}`, false);
             }
         });
         
