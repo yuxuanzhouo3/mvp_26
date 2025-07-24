@@ -432,6 +432,73 @@
             background: #ccc;
             cursor: not-allowed;
         }
+        
+        .upload-button {
+            background: transparent;
+            color: #667eea;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-right: 8px;
+        }
+        
+        .upload-button:hover {
+            background: #f0f4ff;
+            color: #5a6fd8;
+        }
+        
+        .file-preview {
+            background: #f8f9fa;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .file-preview img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .file-info {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .file-size {
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .remove-file {
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
 
         .response-content {
             background: white;
@@ -804,155 +871,21 @@
                         <div class="model-selector">
                             <select id="combinedSelect" onchange="updateModelInfo()">
                                 <optgroup label="🤖 mornGPT Modules">
-                                    <option value="h1">Multi-GPT Prompts (H1) - Basic</option>
-                                    <option value="h2">Multi-GPT Prompts (H2) - Standard</option>
-                                    <option value="h3">Multi-GPT Prompts (H3) - Advanced</option>
-                                    <option value="h4">Multi-GPT Prompts (H4) - Expert</option>
-                                    <option value="h5">Multi-GPT Prompts (H5) - Professional</option>
-                                    <option value="h6">Multi-GPT Prompts (H6) - Enterprise</option>
-                                    <option value="h7">Multi-GPT Prompts (H7) - Premium</option>
-                                    <option value="h8">Multi-GPT Prompts (H8) - Elite</option>
-                                    <option value="h9">Multi-GPT Prompts (H9) - Ultimate</option>
-                                    
-                                    <option value="q1">AI Teacher/Coach (Q1) - Basic</option>
-                                    <option value="q2">AI Teacher/Coach (Q2) - Standard</option>
-                                    <option value="q3">AI Teacher/Coach (Q3) - Advanced</option>
-                                    <option value="q4">AI Teacher/Coach (Q4) - Expert</option>
-                                    <option value="q5">AI Teacher/Coach (Q5) - Professional</option>
-                                    <option value="q6">AI Teacher/Coach (Q6) - Enterprise</option>
-                                    <option value="q7">AI Teacher/Coach (Q7) - Premium</option>
-                                    <option value="q8">AI Teacher/Coach (Q8) - Elite</option>
-                                    <option value="q9">AI Teacher/Coach (Q9) - Ultimate</option>
-                                    
-                                    <option value="c1">AI Coder (C1) - Basic</option>
-                                    <option value="c2">AI Coder (C2) - Standard</option>
-                                    <option value="c3">AI Coder (C3) - Advanced</option>
-                                    <option value="c4">AI Coder (C4) - Expert</option>
-                                    <option value="c5">AI Coder (C5) - Professional</option>
-                                    <option value="c6">AI Coder (C6) - Enterprise</option>
-                                    <option value="c7">AI Coder (C7) - Premium</option>
-                                    <option value="c8">AI Coder (C8) - Elite</option>
-                                    <option value="c9">AI Coder (C9) - Ultimate</option>
-                                    
-                                    <option value="w1">Content Generation (W1) - Basic</option>
-                                    <option value="w2">Content Generation (W2) - Standard</option>
-                                    <option value="w3">Content Generation (W3) - Advanced</option>
-                                    <option value="w4">Content Generation (W4) - Expert</option>
-                                    <option value="w5">Content Generation (W5) - Professional</option>
-                                    <option value="w6">Content Generation (W6) - Enterprise</option>
-                                    <option value="w7">Content Generation (W7) - Premium</option>
-                                    <option value="w8">Content Generation (W8) - Elite</option>
-                                    <option value="w9">Content Generation (W9) - Ultimate</option>
-                                    
-                                    <option value="d1">Content Detection (D1) - Basic</option>
-                                    <option value="d2">Content Detection (D2) - Standard</option>
-                                    <option value="d3">Content Detection (D3) - Advanced</option>
-                                    <option value="d4">Content Detection (D4) - Expert</option>
-                                    <option value="d5">Content Detection (D5) - Professional</option>
-                                    <option value="d6">Content Detection (D6) - Enterprise</option>
-                                    <option value="d7">Content Detection (D7) - Premium</option>
-                                    <option value="d8">Content Detection (D8) - Elite</option>
-                                    <option value="d9">Content Detection (D9) - Ultimate</option>
-                                    
-                                    <option value="p1">Person Search & Matching (P1) - Basic</option>
-                                    <option value="p2">Person Search & Matching (P2) - Standard</option>
-                                    <option value="p3">Person Search & Matching (P3) - Advanced</option>
-                                    <option value="p4">Person Search & Matching (P4) - Expert</option>
-                                    <option value="p5">Person Search & Matching (P5) - Professional</option>
-                                    <option value="p6">Person Search & Matching (P6) - Enterprise</option>
-                                    <option value="p7">Person Search & Matching (P7) - Premium</option>
-                                    <option value="p8">Person Search & Matching (P8) - Elite</option>
-                                    <option value="p9">Person Search & Matching (P9) - Ultimate</option>
-                                    
-                                    <option value="b1">Interview/Job (B1) - Basic</option>
-                                    <option value="b2">Interview/Job (B2) - Standard</option>
-                                    <option value="b3">Interview/Job (B3) - Advanced</option>
-                                    <option value="b4">Interview/Job (B4) - Expert</option>
-                                    <option value="b5">Interview/Job (B5) - Professional</option>
-                                    <option value="b6">Interview/Job (B6) - Enterprise</option>
-                                    <option value="b7">Interview/Job (B7) - Premium</option>
-                                    <option value="b8">Interview/Job (B8) - Elite</option>
-                                    <option value="b9">Interview/Job (B9) - Ultimate</option>
-                                    
-                                    <option value="e1">Medical Advice (E1) - Basic</option>
-                                    <option value="e2">Medical Advice (E2) - Standard</option>
-                                    <option value="e3">Medical Advice (E3) - Advanced</option>
-                                    <option value="e4">Medical Advice (E4) - Expert</option>
-                                    <option value="e5">Medical Advice (E5) - Professional</option>
-                                    <option value="e6">Medical Advice (E6) - Enterprise</option>
-                                    <option value="e7">Medical Advice (E7) - Premium</option>
-                                    <option value="e8">Medical Advice (E8) - Elite</option>
-                                    <option value="e9">Medical Advice (E9) - Ultimate</option>
-                                    
-                                    <option value="a1">Growth Advisory (A1) - Basic</option>
-                                    <option value="a2">Growth Advisory (A2) - Standard</option>
-                                    <option value="a3">Growth Advisory (A3) - Advanced</option>
-                                    <option value="a4">Growth Advisory (A4) - Expert</option>
-                                    <option value="a5">Growth Advisory (A5) - Professional</option>
-                                    <option value="a6">Growth Advisory (A6) - Enterprise</option>
-                                    <option value="a7">Growth Advisory (A7) - Premium</option>
-                                    <option value="a8">Growth Advisory (A8) - Elite</option>
-                                    <option value="a9">Growth Advisory (A9) - Ultimate</option>
-                                    
-                                    <option value="s1">Product Search (S1) - Basic</option>
-                                    <option value="s2">Product Search (S2) - Standard</option>
-                                    <option value="s3">Product Search (S3) - Advanced</option>
-                                    <option value="s4">Product Search (S4) - Expert</option>
-                                    <option value="s5">Product Search (S5) - Professional</option>
-                                    <option value="s6">Product Search (S6) - Enterprise</option>
-                                    <option value="s7">Product Search (S7) - Premium</option>
-                                    <option value="s8">Product Search (S8) - Elite</option>
-                                    <option value="s9">Product Search (S9) - Ultimate</option>
-                                    
-                                    <option value="u1">Restaurant/Food (U1) - Basic</option>
-                                    <option value="u2">Restaurant/Food (U2) - Standard</option>
-                                    <option value="u3">Restaurant/Food (U3) - Advanced</option>
-                                    <option value="u4">Restaurant/Food (U4) - Expert</option>
-                                    <option value="u5">Restaurant/Food (U5) - Professional</option>
-                                    <option value="u6">Restaurant/Food (U6) - Enterprise</option>
-                                    <option value="u7">Restaurant/Food (U7) - Premium</option>
-                                    <option value="u8">Restaurant/Food (U8) - Elite</option>
-                                    <option value="u9">Restaurant/Food (U9) - Ultimate</option>
-                                    
-                                    <option value="t1">Personalized Clothing (T1) - Basic</option>
-                                    <option value="t2">Personalized Clothing (T2) - Standard</option>
-                                    <option value="t3">Personalized Clothing (T3) - Advanced</option>
-                                    <option value="t4">Personalized Clothing (T4) - Expert</option>
-                                    <option value="t5">Personalized Clothing (T5) - Professional</option>
-                                    <option value="t6">Personalized Clothing (T6) - Enterprise</option>
-                                    <option value="t7">Personalized Clothing (T7) - Premium</option>
-                                    <option value="t8">Personalized Clothing (T8) - Elite</option>
-                                    <option value="t9">Personalized Clothing (T9) - Ultimate</option>
-                                    
-                                    <option value="o1">Personalized Housing (O1) - Basic</option>
-                                    <option value="o2">Personalized Housing (O2) - Standard</option>
-                                    <option value="o3">Personalized Housing (O3) - Advanced</option>
-                                    <option value="o4">Personalized Housing (O4) - Expert</option>
-                                    <option value="o5">Personalized Housing (O5) - Professional</option>
-                                    <option value="o6">Personalized Housing (O6) - Enterprise</option>
-                                    <option value="o7">Personalized Housing (O7) - Premium</option>
-                                    <option value="o8">Personalized Housing (O8) - Elite</option>
-                                    <option value="o9">Personalized Housing (O9) - Ultimate</option>
-                                    
-                                    <option value="r1">Personalized Traveling (R1) - Basic</option>
-                                    <option value="r2">Personalized Traveling (R2) - Standard</option>
-                                    <option value="r3">Personalized Traveling (R3) - Advanced</option>
-                                    <option value="r4">Personalized Traveling (R4) - Expert</option>
-                                    <option value="r5">Personalized Traveling (R5) - Professional</option>
-                                    <option value="r6">Personalized Traveling (R6) - Enterprise</option>
-                                    <option value="r7">Personalized Traveling (R7) - Premium</option>
-                                    <option value="r8">Personalized Traveling (R8) - Elite</option>
-                                    <option value="r9">Personalized Traveling (R9) - Ultimate</option>
-                                    
-                                    <option value="z1">Anti-AI Protection (Z1) - Basic</option>
-                                    <option value="z2">Anti-AI Protection (Z2) - Standard</option>
-                                    <option value="z3">Anti-AI Protection (Z3) - Advanced</option>
-                                    <option value="z4">Anti-AI Protection (Z4) - Expert</option>
-                                    <option value="z5">Anti-AI Protection (Z5) - Professional</option>
-                                    <option value="z6">Anti-AI Protection (Z6) - Enterprise</option>
-                                    <option value="z7">Anti-AI Protection (Z7) - Premium</option>
-                                    <option value="z8">Anti-AI Protection (Z8) - Elite</option>
-                                    <option value="z9">Anti-AI Protection (Z9) - Ultimate</option>
+                                    <option value="h1">Multi-GPT Prompts (H1)</option>
+                                    <option value="q1">AI Teacher/Coach (Q1)</option>
+                                    <option value="c1">AI Coder (C1)</option>
+                                    <option value="w1">Content Generation (W1)</option>
+                                    <option value="d1">Content Detection (D1)</option>
+                                    <option value="p1">Person Search & Matching (P1)</option>
+                                    <option value="b1">Interview/Job (B1)</option>
+                                    <option value="e1">Medical Advice (E1)</option>
+                                    <option value="a1">Growth Advisory (A1)</option>
+                                    <option value="s1">Product Search (S1)</option>
+                                    <option value="u1">Restaurant/Food (U1)</option>
+                                    <option value="t1">Personalized Clothing (T1)</option>
+                                    <option value="o1">Personalized Housing (O1)</option>
+                                    <option value="r1">Personalized Traveling (R1)</option>
+                                    <option value="z1">Anti-AI Protection (Z1)</option>
                                 </optgroup>
                                 
                                 <optgroup label="🆓 Free Models">
@@ -987,6 +920,11 @@
                     <div class="chat-input-container">
                         <form id="chatForm">
                             <div class="input-wrapper">
+                                <button type="button" class="upload-button" onclick="document.getElementById('fileInput').click()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15M17 8L12 3M12 3L7 8M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
                                 <textarea 
                                     id="chatInput" 
                                     placeholder="Message mornGPT..." 
@@ -999,6 +937,7 @@
                                     </svg>
                                 </button>
                             </div>
+                            <input type="file" id="fileInput" style="display: none;" accept=".txt,.pdf,.doc,.docx,.jpg,.jpeg,.png,.gif" onchange="handleFileUpload(this)">
                         </form>
                     </div>
                 </div>
@@ -1605,9 +1544,61 @@
         document.getElementById('submoduleSelect').addEventListener('change', configureModule);
         
         // Chat interface functions
+        let uploadedFile = null;
+        
         function autoResize(textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+        }
+        
+        function handleFileUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            // Check file size (max 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size must be less than 10MB');
+                return;
+            }
+            
+            uploadedFile = file;
+            showFilePreview(file);
+        }
+        
+        function showFilePreview(file) {
+            const container = document.querySelector('.chat-input-container');
+            
+            // Remove existing preview
+            const existingPreview = container.querySelector('.file-preview');
+            if (existingPreview) {
+                existingPreview.remove();
+            }
+            
+            const preview = document.createElement('div');
+            preview.className = 'file-preview';
+            
+            const isImage = file.type.startsWith('image/');
+            const fileSize = (file.size / 1024).toFixed(1) + ' KB';
+            
+            preview.innerHTML = `
+                ${isImage ? `<img src="${URL.createObjectURL(file)}" alt="Preview">` : ''}
+                <div class="file-info">
+                    <div class="file-name">${file.name}</div>
+                    <div class="file-size">${fileSize}</div>
+                </div>
+                <button class="remove-file" onclick="removeFile()">×</button>
+            `;
+            
+            container.insertBefore(preview, container.querySelector('form'));
+        }
+        
+        function removeFile() {
+            uploadedFile = null;
+            document.getElementById('fileInput').value = '';
+            const preview = document.querySelector('.file-preview');
+            if (preview) {
+                preview.remove();
+            }
         }
         
         function addMessage(content, isUser = false) {
@@ -1646,12 +1637,21 @@
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
             
-            if (!message) return;
+            if (!message && !uploadedFile) return;
             
             // Add user message
-            addMessage(message, true);
+            let userMessage = message;
+            if (uploadedFile) {
+                userMessage += `\n[Uploaded file: ${uploadedFile.name}]`;
+            }
+            addMessage(userMessage, true);
+            
+            // Clear input and file
             input.value = '';
             input.style.height = 'auto';
+            if (uploadedFile) {
+                removeFile();
+            }
             
             // Get selected model/module
             const selected = document.getElementById('combinedSelect').value;
