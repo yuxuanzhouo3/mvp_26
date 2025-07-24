@@ -951,6 +951,7 @@
                 <div class="model-categories">
                     <div class="category-tabs">
                         <button class="category-tab active" onclick="switchCategory('free')">🆓 Free APIs</button>
+                        <button class="category-tab" onclick="switchCategory('morngpt')">🤖 mornGPT Modules</button>
                         <button class="category-tab" onclick="switchCategory('ultra-cheap')">💰 Ultra-Cheap</button>
                         <button class="category-tab" onclick="switchCategory('cheap')">💸 Cheap</button>
                         <button class="category-tab" onclick="switchCategory('popular')">⭐ Popular</button>
@@ -1038,6 +1039,167 @@
                                     <div class="model-actions">
                                         <span class="cost-badge free-badge">FREE</span>
                                         <button class="test-btn" onclick="testModel('Salesforce/codegen-350M-mono', 'huggingface')">Test</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- mornGPT Modules Category -->
+                <div id="morngpt" class="category-content">
+                    <div class="grid">
+                        <div class="card">
+                            <h3>🤖 mornGPT Specialized Modules</h3>
+                            <ul class="model-list">
+                                <li class="model-item" data-model="h1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Multi-GPT Prompts (H1)</span>
+                                        <span class="model-desc">Advanced prompt orchestration and optimization</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('h1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="q1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">AI Teacher/Coach (Q1)</span>
+                                        <span class="model-desc">Personalized learning and educational guidance</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('q1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="c1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">AI Coder (C1)</span>
+                                        <span class="model-desc">Code generation, debugging, and programming help</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('c1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="w1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Content Generation (W1)</span>
+                                        <span class="model-desc">Text, image, audio, and video content creation</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('w1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="d1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Content Detection (D1)</span>
+                                        <span class="model-desc">AI-generated content detection and analysis</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('d1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="p1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Person Search & Matching (P1)</span>
+                                        <span class="model-desc">Job matching, life partner, and business connections</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('p1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="b1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Interview/Job (B1)</span>
+                                        <span class="model-desc">Interview preparation and job search assistance</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('b1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="e1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Medical Advice (E1)</span>
+                                        <span class="model-desc">Health guidance and medical information</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('e1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="a1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Growth Advisory (A1)</span>
+                                        <span class="model-desc">Customer and user growth strategies</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('a1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="s1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Product Search (S1)</span>
+                                        <span class="model-desc">Product recommendations and pricing analysis</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('s1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="u1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Restaurant/Food (U1)</span>
+                                        <span class="model-desc">Food recommendations and restaurant suggestions</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('u1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="t1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Personalized Clothing (T1)</span>
+                                        <span class="model-desc">Fashion advice and personalized shopping</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('t1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="o1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Personalized Housing (O1)</span>
+                                        <span class="model-desc">Real estate and accommodation recommendations</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('o1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="r1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Personalized Traveling (R1)</span>
+                                        <span class="model-desc">Travel planning and transportation advice</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('r1')">Test</button>
+                                    </div>
+                                </li>
+                                <li class="model-item" data-model="z1" data-provider="morngpt" data-cost="0">
+                                    <div class="model-info">
+                                        <span class="model-name">Anti-AI Protection (Z1)</span>
+                                        <span class="model-desc">AI detection and protection strategies</span>
+                                    </div>
+                                    <div class="model-actions">
+                                        <span class="cost-badge free-badge">FREE</span>
+                                        <button class="test-btn" onclick="testMornGPTModule('z1')">Test</button>
                                     </div>
                                 </li>
                             </ul>
@@ -1861,6 +2023,94 @@
                 contentElement.textContent = `Network error: ${error.message}`;
                 metaElement.innerHTML = `
                     <span>Provider: ${provider}</span>
+                    <span>Error: Network error</span>
+                    <span>Time: N/A</span>
+                `;
+            }
+        }
+        
+        // Test mornGPT module
+        async function testMornGPTModule(module) {
+            const moduleConfig = getModuleConfig(module[0], parseInt(module[1]));
+            const testPrompt = `Test the ${moduleConfig.name} module with a sample request.`;
+            
+            // Show test results section
+            const testResults = document.getElementById('testResults');
+            testResults.style.display = 'block';
+            
+            // Add test result item
+            const testResultsContent = document.getElementById('testResultsContent');
+            const resultId = `test-${Date.now()}`;
+            
+            testResultsContent.innerHTML += `
+                <div id="${resultId}" class="test-result-item">
+                    <div class="test-result-header">
+                        <span class="test-result-model">${moduleConfig.name} (${module.toUpperCase()})</span>
+                        <span class="test-result-status">Testing...</span>
+                    </div>
+                    <div class="test-result-content">Initializing mornGPT module test...</div>
+                    <div class="test-result-meta">
+                        <span>Provider: mornGPT (${moduleConfig.model})</span>
+                        <span>Cost: Calculating...</span>
+                        <span>Time: Measuring...</span>
+                    </div>
+                </div>
+            `;
+            
+            const resultElement = document.getElementById(resultId);
+            const statusElement = resultElement.querySelector('.test-result-status');
+            const contentElement = resultElement.querySelector('.test-result-content');
+            const metaElement = resultElement.querySelector('.test-result-meta');
+            
+            try {
+                const startTime = Date.now();
+                
+                const response = await fetch(`${API_BASE}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: `[${module.toUpperCase()}] ${testPrompt}`,
+                        model: moduleConfig.model,
+                        budget: 'auto',
+                        max_tokens: moduleConfig.maxTokens,
+                        temperature: moduleConfig.temperature,
+                        module: module[0],
+                        submodule: parseInt(module[1])
+                    })
+                });
+                
+                const data = await response.json();
+                const endTime = Date.now();
+                const responseTime = (endTime - startTime) / 1000;
+                
+                if (response.ok && data.success) {
+                    statusElement.textContent = 'Success';
+                    statusElement.className = 'test-result-status success';
+                    contentElement.textContent = data.content;
+                    metaElement.innerHTML = `
+                        <span>Provider: mornGPT (${moduleConfig.model})</span>
+                        <span>Cost: $${data.cost.toFixed(6)}</span>
+                        <span>Time: ${responseTime.toFixed(2)}s</span>
+                        <span>Tokens: ${data.tokens_used}</span>
+                    `;
+                } else {
+                    statusElement.textContent = 'Error';
+                    statusElement.className = 'test-result-status error';
+                    contentElement.textContent = data.error || 'Test failed';
+                    metaElement.innerHTML = `
+                        <span>Provider: mornGPT</span>
+                        <span>Error: ${data.error || 'Unknown error'}</span>
+                        <span>Time: ${responseTime.toFixed(2)}s</span>
+                    `;
+                }
+            } catch (error) {
+                statusElement.textContent = 'Error';
+                statusElement.className = 'test-result-status error';
+                contentElement.textContent = `Network error: ${error.message}`;
+                metaElement.innerHTML = `
+                    <span>Provider: mornGPT</span>
                     <span>Error: Network error</span>
                     <span>Time: N/A</span>
                 `;
